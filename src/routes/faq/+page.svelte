@@ -81,8 +81,13 @@
     </ul>
 
     <DocHeader id="does-flow-have-online-sync">Does Flow have online sync?</DocHeader>
+    <p>No.</p>
+
+    <DocHeader id="does-flow-have-autobackup">Does Flow have auto backup?</DocHeader>
     <p>
-      No, but iCloud sync is to come soon. I recommend doing periodic backups to avoid data loss.
+      Yes. If you're using Flow on iOS, you can also enable iCloud to save your backups. If you're
+      using other OS, you're advised to download your manual and auto backups and save them
+      elsewhere.
     </p>
     <!-- <details open>
       <summary> For users on Android, Windows, or Linux </summary>
