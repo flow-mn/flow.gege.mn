@@ -79,7 +79,7 @@
         💱
       {/snippet}
       Flow supports multiple currencies, and can convert between them.
-      <Fna n="2" />
+      <Fna n="1" />
     </FeatureCard>
   </div>
 
