@@ -1,5 +1,5 @@
 <script lang="ts">
-  import copyBankAccountNumber from "$lib/copyBankAccountNumber";
+  import { copyBankAccNo } from "$lib/copyBankAccNo";
 </script>
 
 <svelte:head>
@@ -39,7 +39,7 @@
     <h4>Golomt Bank of Mongolia:</h4>
     <div>
       <button
-        onclick={copyBankAccountNumber}
+        onclick={copyBankAccNo}
         class="appearance-none font-bold"
       >
         MN17 0015 0011 0541 5662

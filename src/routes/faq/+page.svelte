@@ -1,7 +1,7 @@
 <script lang="ts">
   import DocHeader from "$lib/components/DocHeader.svelte";
   import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
-  import copyBankAccountNumber from "$lib/copyBankAccNo";
+  import { copyBankAccNo } from "$lib/copyBankAccNo";
 </script>
 
 <svelte:head>
@@ -28,7 +28,7 @@
         class="appearance-none font-bold"
         type="button"
         title="Click to copy IBAN"
-        onclick={copyBankAccountNumber}
+        onclick={copyBankAccNo}
       >
         MN17 0015 0011 0541 5662
       </button> (Batmend Ganbaatar)
