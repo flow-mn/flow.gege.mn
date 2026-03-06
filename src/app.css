@@ -10,8 +10,9 @@ layer(base);
   --color-rose: #ff4040;
   --color-text: #f5f6fa;
   --color-background: #141414;
+  --color-surface: #1c1c1c;
 
-  --shadow-footer: 0 -1px 6px 0px rgba(255, 255, 255, 0.1);
+  --shadow-footer: 0 -1px 0px 0px rgba(255, 255, 255, 0.06);
 
   --animate-move-around-a: moveAroundA 10s alternate infinite;
   --animate-move-around-b: moveAroundB 10s alternate infinite;
@@ -43,14 +44,6 @@ layer(base);
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -127,7 +120,11 @@ layer(base);
 }
 
 @utility babalo {
-  @apply bg-primary absolute h-40 w-40 opacity-60 blur-3xl;
+  @apply bg-primary absolute h-56 w-56 opacity-40 blur-3xl;
+}
+
+@utility surface {
+  background-color: var(--color-surface);
 }
 
 @layer utilities {

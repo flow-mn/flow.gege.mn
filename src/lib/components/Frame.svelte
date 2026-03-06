@@ -14,8 +14,8 @@
 <div class="flex w-screen flex-row justify-center overflow-x-hidden">
   <section
     class:padMobile
-    class={clsx("max-w-(--breakpoint-xl,100vw) w-full", {
-      "xl:p-5": padMobile,
+    class={clsx("w-full max-w-7xl", {
+      "max-xl:px-5": padMobile,
       "min-h-[80vh]": fullHeight,
     })}
   >
