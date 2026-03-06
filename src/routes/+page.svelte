@@ -10,11 +10,13 @@
 </svelte:head>
 
 <!-- Blob decorations -->
-<div class="babalo animate-move-around-a left-[20vw] top-[20vh] hidden md:block"></div>
-<div class="babalo animate-move-around-b right-[15vw] top-[5vh] hidden md:block"></div>
-<div class="babalo animate-move-around-c right-[10vw] top-[75vh] hidden md:block"></div>
-<div class="babalo animate-move-around-a left-[-5vw] top-[8vh] md:hidden"></div>
-<div class="babalo animate-move-around-c right-[5vw] top-[75vh] md:hidden"></div>
+<div class="pointer-events-none relative z-0">
+  <div class="babalo animate-move-around-a left-[20vw] top-[20vh] hidden md:block"></div>
+  <div class="babalo animate-move-around-b right-[15vw] top-[5vh] hidden md:block"></div>
+  <div class="babalo animate-move-around-c right-[10vw] top-[75vh] hidden md:block"></div>
+  <div class="babalo animate-move-around-a left-[-5vw] top-[8vh] md:hidden"></div>
+  <div class="babalo animate-move-around-c right-[5vw] top-[75vh] md:hidden"></div>
+</div>
 
 <!-- Hero -->
 <section class="flex flex-col items-center gap-8 px-4 text-center">

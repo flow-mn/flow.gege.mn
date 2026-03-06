@@ -120,11 +120,17 @@ layer(base);
 }
 
 @utility babalo {
-  @apply bg-primary absolute h-56 w-56 opacity-40 blur-3xl;
+  @apply bg-primary absolute block h-56 w-56 opacity-40 blur-3xl;
 }
 
 @utility surface {
   background-color: var(--color-surface);
+}
+
+@utility row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 @layer utilities {

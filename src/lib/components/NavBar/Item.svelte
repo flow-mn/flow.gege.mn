@@ -8,9 +8,10 @@
     href: string;
     target?: HTMLAnchorElement["target"];
     selected?: boolean;
+    class?: string;
   }
 
-  let { children, target, href }: Props = $props();
+  let { children, target, href, class: className }: Props = $props();
 
   let selected = $state(window.location.pathname === href);
 
@@ -20,7 +21,7 @@
 </script>
 
 <a
-  class={clsx("text-text visited:text-text hover:text-primary focus-visible:text-primary", {
+  class={clsx("text-text visited:text-text hover:text-primary focus-visible:text-primary", className, {
     "text-primary!": selected,
   })}
   {href}

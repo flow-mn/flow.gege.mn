@@ -4,9 +4,9 @@
   import Frame from "./Frame.svelte";
 </script>
 
-<footer class="bg-background shadow-footer w-screen py-12 md:py-16">
+<footer class="bg-background shadow-footer w-screen py-8 md:py-16">
   <Frame>
-    <div class="flex flex-col gap-10">
+    <div class="flex flex-col gap-6 md:gap-10">
       <ul
         class="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-4"
         data-no-bullet
@@ -112,8 +112,8 @@
           </ul>
         </li>
       </ul>
-
-      <div class="border-t border-white/5 pt-6 text-xs opacity-40">
+      <hr class="border-t border-white/5" />
+      <div class="text-xs opacity-40">
         &copy; {new Date().getFullYear()} Batmend Ganbaatar
       </div>
     </div>

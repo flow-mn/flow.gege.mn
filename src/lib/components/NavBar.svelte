@@ -7,9 +7,7 @@
 
 <nav class="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-[#141414]/80 backdrop-blur-md">
   <Frame>
-    <ul
-      class="h-(--navbar-height,4rem) *:before:content-['']! flex w-full flex-row items-center gap-4 font-semibold *:list-none md:gap-8"
-    >
+    <ul class="h-(--navbar-height,4rem) row *:row w-full gap-4 font-semibold *:list-none md:gap-8">
       <li>
         <a
           href="/"
@@ -30,6 +28,7 @@
         <Item
           href="https://github.com/flow-mn/flow"
           target="_blank"
+          class="row"
         >
           <div class="inline-flex flex-row items-center gap-2">
             <GitHubOctocat />
