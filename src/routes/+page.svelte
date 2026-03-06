@@ -9,39 +9,72 @@
   <title>Flow - FOSS expense tracker</title>
 </svelte:head>
 
-<!-- md+ -->
-<div class="babalo animate-move-around-a left-[25vw] top-[25vh] hidden md:block"></div>
-<div class="babalo animate-move-around-b right-[20vw] top-[10vh] hidden md:block"></div>
-<div class="babalo animate-move-around-c right-[15vw] top-[80vh] hidden md:block"></div>
-<!-- mobile -->
-<div class="babalo animate-move-around-a left-[-1vw] top-[10vh] md:hidden"></div>
-<div class="babalo animate-move-around-c right-[8vw] top-[80vh] md:hidden"></div>
+<!-- Blob decorations -->
+<div class="babalo animate-move-around-a left-[20vw] top-[20vh] hidden md:block"></div>
+<div class="babalo animate-move-around-b right-[15vw] top-[5vh] hidden md:block"></div>
+<div class="babalo animate-move-around-c right-[10vw] top-[75vh] hidden md:block"></div>
+<div class="babalo animate-move-around-a left-[-5vw] top-[8vh] md:hidden"></div>
+<div class="babalo animate-move-around-c right-[5vw] top-[75vh] md:hidden"></div>
 
-<section class="flex flex-col items-center gap-10">
-  <div class="h-28"></div>
+<!-- Hero -->
+<section class="flex flex-col items-center gap-8 px-4 text-center">
+  <div class="h-20 md:h-28"></div>
 
   <div
-    data-aos="fade-right"
-    class="text-3xl font-semibold max-md:text-center"
+    data-aos="fade-up"
+    class="border-primary/30 bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium"
   >
-    Start tracking your finances.
+    <span>Free &amp; Open Source</span>
+  </div>
+
+  <h1
+    data-aos="fade-up"
+    data-aos-delay="60"
+    class="max-w-2xl text-5xl font-bold leading-tight tracking-tight md:text-6xl"
+  >
+    Track your finances,<br /><span class="text-primary">your way.</span>
+  </h1>
+
+  <p
+    data-aos="fade-up"
+    data-aos-delay="120"
+    class="max-w-md text-base opacity-60 md:text-lg"
+  >
+    Flow is a free, offline, privacy-first expense tracker. You control your data — always.
+  </p>
+
+  <div
+    data-aos="fade-up"
+    data-aos-delay="180"
+  >
+    <FlexDownloadButtons />
   </div>
 
   <a
-    data-aos="fade-right"
+    data-aos="fade-up"
+    data-aos-delay="240"
     href="https://discord.gg/Ndh9VDeZa4"
     target="_blank"
-    class="bg-primary text-background visited:text-background inline-block w-fit rounded-lg px-3 py-2 text-lg font-semibold"
+    class="visited:text-text/50 text-text/50 hover:text-primary inline-flex items-center gap-2 text-sm transition-colors"
   >
-    <DiscordLogo></DiscordLogo>
+    <DiscordLogo />
     Join Discord for updates
   </a>
 
-  <FlexDownloadButtons />
+  <div class="h-20 md:h-28"></div>
+</section>
 
-  <div class="h-28"></div>
+<!-- Features -->
+<section class="flex flex-col items-center gap-10 px-4">
+  <div
+    data-aos="fade-up"
+    class="text-center"
+  >
+    <p class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Features</p>
+    <h2 class="text-3xl font-bold">Everything you need</h2>
+  </div>
 
-  <div class="grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <div class="grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     <FeatureCard title="Free and open-source">
       {#snippet icon()}
         🌐
@@ -60,43 +93,47 @@
       {#snippet icon()}
         🔁
       {/snippet}
-      Easily manage your subscriptions, paychecks, and bills
+      Easily manage your subscriptions, paychecks, and bills.
     </FeatureCard>
 
     <FeatureCard title="iCloud backup">
       {#snippet icon()}
         ☁️
       {/snippet}
-      Your can periodically backup your data to iCloud
+      Periodically back up your data to iCloud for safe-keeping.
     </FeatureCard>
 
     <FeatureCard title="Seamless UX">
       {#snippet icon()}
-        💯
+        ✨
       {/snippet}
-      Flow tries to be as user-friendly as possible, with a clean and simple UI.
+      Flow is built to be as user-friendly as possible, with a clean and simple UI.
     </FeatureCard>
 
     <FeatureCard title="Multi-currency">
       {#snippet icon()}
         💱
       {/snippet}
-      Flow supports multiple currencies, and can convert between them.
-      <Fna n="1" />
+      Flow supports multiple currencies and can convert between them.<Fna n="1" />
     </FeatureCard>
   </div>
 
-  <div class="h-28"></div>
+  <div class="h-20 md:h-28"></div>
+</section>
 
-  <div class="text-xs opacity-75">
-    <p id="fna1">
-      <span class="font-mono">[1]</span> - Flow may need internet to fetch exchange rates if you use more than one currency.
-    </p>
-    <br />
-    <p id="fna2">
-      <span class="font-mono">[2]</span> - If you use older Android devices, or devices with Windows, or Linux-based operating
-      systems, Flow may store your data, and backups in a easily accessible place. Make sure your device and system supports
-      containerized storage, or other type of external access protection as you are responsible for your financial data.
-    </p>
+<!-- Footnotes -->
+<section class="flex flex-col items-center px-4">
+  <div class="w-full max-w-5xl">
+    <div class="border-t border-white/10 pt-6 text-xs opacity-50">
+      <p id="fna1">
+        <span class="font-mono">[1]</span> Flow may need internet to fetch exchange rates if you use more than one currency.
+      </p>
+      <br />
+      <p id="fna2">
+        <span class="font-mono">[2]</span> If you use older Android devices, or devices with Windows or Linux-based operating
+        systems, Flow may store your data and backups in an easily accessible place. Make sure your device supports containerized
+        storage or other external access protection, as you are responsible for your financial data.
+      </p>
+    </div>
   </div>
 </section>
