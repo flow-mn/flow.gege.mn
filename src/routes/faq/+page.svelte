@@ -1,7 +1,7 @@
 <script lang="ts">
-  import DocHeader from '$lib/components/DocHeader.svelte';
-  import FlexDownloadButtons from '$lib/components/FlexDownloadButtons.svelte';
-  import copyBankAccountNumber from '$lib/copyBankAccNo';
+  import DocHeader from "$lib/components/DocHeader.svelte";
+  import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
+  import copyBankAccountNumber from "$lib/copyBankAccNo";
 </script>
 
 <svelte:head>
@@ -37,14 +37,13 @@
 {/snippet}
 
 <section class="flex flex-col items-center justify-center gap-4">
-  <div class="flex max-w-(--breakpoint-md) flex-col [&_details]:mt-2 [&_p]:mt-2 [&_p]:max-w-prose">
+  <div class="max-w-(--breakpoint-md) flex flex-col [&_details]:mt-2 [&_p]:mt-2 [&_p]:max-w-prose">
     <h1 class="mb-8">Frequently Asked Questions</h1>
 
     <DocHeader id="what-is-flow">What is Flow?</DocHeader>
 
     <p>
-      Flow is a free and open-source personal finance tracking app. As Flow is offline, you are in
-      control of your data.
+      Flow is a free and open-source personal finance tracking app. As Flow is offline, you are in control of your data.
     </p>
 
     <DocHeader id="where-do-i-download-flow">Where do I download Flow?</DocHeader>
@@ -57,14 +56,11 @@
     <DocHeader id="can-i-export-all-of-my-data">Can I export all of my data?</DocHeader>
 
     <p>
-      Yes, you can export JSON/ZIP backups which you can import it to another device, and CSV files
-      for analyzing your data in spreadsheet software (i.e., Excel, Google Sheets), which is not
-      recoverable like JSON/ZIP backups.
+      Yes, you can export JSON/ZIP backups which you can import it to another device, and CSV files for analyzing your
+      data in spreadsheet software (i.e., Excel, Google Sheets), which is not recoverable like JSON/ZIP backups.
     </p>
 
-    <DocHeader id="importing-erased-my-data-how-to-recover">
-      Importing erased my data, how to recover?
-    </DocHeader>
+    <DocHeader id="importing-erased-my-data-how-to-recover">Importing erased my data, how to recover?</DocHeader>
 
     <p>
       Flow does a precaution backup before starting to import. You can find the backup in <b
@@ -75,8 +71,8 @@
     <ul class="list-inside list-disc">
       <li>Please note that the precaution isn't guaranteed to succeed</li>
       <li>
-        Also iOS clears the temporary storage periodically, so you may find the backup file deleted
-        if too much time has passed.
+        Also iOS clears the temporary storage periodically, so you may find the backup file deleted if too much time has
+        passed.
       </li>
     </ul>
 
@@ -85,9 +81,8 @@
 
     <DocHeader id="does-flow-have-autobackup">Does Flow have auto backup?</DocHeader>
     <p>
-      Yes. If you're using Flow on iOS, you can also enable iCloud to save your backups. If you're
-      using other OS, you're advised to download your manual and auto backups and save them
-      elsewhere.
+      Yes. If you're using Flow on iOS, you can also enable iCloud to save your backups. If you're using other OS,
+      you're advised to download your manual and auto backups and save them elsewhere.
     </p>
     <!-- <details open>
       <summary> For users on Android, Windows, or Linux </summary>
@@ -109,30 +104,24 @@
     <DocHeader id="why-icloud-sync-isnt-working">Why iCloud sync isn't working?</DocHeader>
 
     <ul class="list-inside list-disc">
+      <li>Ensure you've logged into your Apple Account on your device (in System Settings, not on Flow)</li>
       <li>
-        Ensure you've logged into your Apple Account on your device (in System Settings, not on
-        Flow)
+        Ensure you've enabled iCloud Drive sync in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud Drive &gt;
+        Sync this iPhone (or your device's name)
       </li>
       <li>
-        Ensure you've enabled iCloud Drive sync in System Settings &gt; Apple Account &gt; iCloud
-        &gt; iCloud Drive &gt; Sync this iPhone (or your device's name)
+        Ensure you've allowed Flow to access iCloud in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud Drive
+        &gt; Apps Syncing to iCloud Drive
       </li>
       <li>
-        Ensure you've allowed Flow to access iCloud in System Settings &gt; Apple Account &gt;
-        iCloud &gt; iCloud Drive &gt; Apps Syncing to iCloud Drive
-      </li>
-      <li>
-        Flow refuses to upload the backup if it's older than the current file on iCloud. You may
-        want to check your device's date and time settings.
+        Flow refuses to upload the backup if it's older than the current file on iCloud. You may want to check your
+        device's date and time settings.
       </li>
     </ul>
 
     <DocHeader id="does-flow-work-offline">Does Flow work offline?</DocHeader>
 
-    <p>
-      Yes, but there are some occurances where Flow might use internet connection. Here are few
-      examples:
-    </p>
+    <p>Yes, but there are some occurances where Flow might use internet connection. Here are few examples:</p>
     <br />
     <ul class="list-inside list-disc">
       <li>Downloading exchange rates information (only if you use more than one currencies)</li>
@@ -146,9 +135,7 @@
       <br />
       Reports are always displayed in your primary currency.
       <br />
-      <span class="opacity-60"
-        >Cross-currency transfers are available on version 0.13.0 and later</span
-      >
+      <span class="opacity-60">Cross-currency transfers are available on version 0.13.0 and later</span>
     </p>
 
     <DocHeader id="can-i-make-transfers-between-different-currency-accounts">
@@ -190,16 +177,13 @@
     <DocHeader id="is-flow-free">Is Flow free?</DocHeader>
 
     <p>
-      Yes, Flow is absolutely free. All of the features are available for free without any
-      limitations. Please consider supporting if you can as I make Flow on the side, and does not
-      generate money off of it ^^
+      Yes, Flow is absolutely free. All of the features are available for free without any limitations. Please consider
+      supporting if you can as I make Flow on the side, and does not generate money off of it ^^
     </p>
     <br />
     {@render beggingEntry()}
 
-    <DocHeader id="how-many-accounts-can-i-have-at-max"
-      >How many accounts can I have at max?</DocHeader
-    >
+    <DocHeader id="how-many-accounts-can-i-have-at-max">How many accounts can I have at max?</DocHeader>
 
     You can have as many accounts as you want.
 
@@ -209,18 +193,17 @@
 
     <p>
       If you have ideas to make Flow better, please submit it to our GitHub
-      <a href="https://github.com/flow-mn/flow/issues" target="_blank">issue tracker</a>. As long as
-      it aligns with Flow's vision, it will be implemented.
+      <a
+        href="https://github.com/flow-mn/flow/issues"
+        target="_blank">issue tracker</a
+      >. As long as it aligns with Flow's vision, it will be implemented.
     </p>
 
-    <DocHeader id="why-is-flow-free-and-or-open-source"
-      >Why is Flow free and/or open-source?</DocHeader
-    >
+    <DocHeader id="why-is-flow-free-and-or-open-source">Why is Flow free and/or open-source?</DocHeader>
 
     <p>
-      Many benefit from open source, including me. And this is my small contribution. Please
-      consider supporting if you can as I make Flow on the side, and does not generate money off of
-      it ^^
+      Many benefit from open source, including me. And this is my small contribution. Please consider supporting if you
+      can as I make Flow on the side, and does not generate money off of it ^^
     </p>
     <br />
     {@render beggingEntry()}
@@ -229,9 +212,7 @@
 
     <p>Recurring transactions feature is available on Flow 0.14.0 or later.</p>
 
-    <DocHeader id="how-does-recurring-transactions-work"
-      >How does the recurring transactions work?</DocHeader
-    >
+    <DocHeader id="how-does-recurring-transactions-work">How does the recurring transactions work?</DocHeader>
 
     <p>It's complicated.</p>
 
@@ -240,14 +221,13 @@
     <p>
       This section is not specific to Flow.<br /><br />
 
-      TL;DR Flow saves to iCloud, and the operating system uploads the file. This process cannot be
-      sped up, or altered.<br /><br />
-
-      Enabling iCloud sync on Flow will not immediately upload the data to iCloud. The operating
-      system decides when it gets uploaded, and the decision is affected by many factors, including
-      network connection, battery level, time of the day, and so on. This is not official Apple
-      documentation, so you should refer to Apple's documentation for more accurate information.<br
+      TL;DR Flow saves to iCloud, and the operating system uploads the file. This process cannot be sped up, or altered.<br
       /><br />
+
+      Enabling iCloud sync on Flow will not immediately upload the data to iCloud. The operating system decides when it
+      gets uploaded, and the decision is affected by many factors, including network connection, battery level, time of
+      the day, and so on. This is not official Apple documentation, so you should refer to Apple's documentation for
+      more accurate information.<br /><br />
 
       Interestingly enough, you don't need an internet connection for Flow to save to iCloud.
     </p>
@@ -257,12 +237,28 @@
     <p>You can contact through any of the following channels:</p>
     <br />
     <ul class="list-inside list-disc">
-      <li><a href="mailto:batmend@gege.mn" target="_blank">batmend@gege.mn</a></li>
-      <li><a href="mailto:flow@gege.mn" target="_blank">flow@gege.mn</a></li>
-      <li><a href="https://discord.gg/Ndh9VDeZa4" target="_blank">Flow's discord channel</a></li>
       <li>
-        More contact information on <a href="https://dev.gege.mn/#contact" target="_blank"
-          >https://dev.gege.mn</a
+        <a
+          href="mailto:batmend@gege.mn"
+          target="_blank">batmend@gege.mn</a
+        >
+      </li>
+      <li>
+        <a
+          href="mailto:flow@gege.mn"
+          target="_blank">flow@gege.mn</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://discord.gg/Ndh9VDeZa4"
+          target="_blank">Flow's discord channel</a
+        >
+      </li>
+      <li>
+        More contact information on <a
+          href="https://dev.gege.mn/#contact"
+          target="_blank">https://dev.gege.mn</a
         >
       </li>
     </ul>

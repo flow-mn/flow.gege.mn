@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { afterNavigate } from '$app/navigation';
-  import clsx from 'clsx';
-  import type { Snippet } from 'svelte';
+  import { afterNavigate } from "$app/navigation";
+  import clsx from "clsx";
+  import type { Snippet } from "svelte";
 
   interface Props {
     children: Snippet;
     href: string;
-    target?: HTMLAnchorElement['target'];
+    target?: HTMLAnchorElement["target"];
     selected?: boolean;
   }
 
@@ -20,8 +20,8 @@
 </script>
 
 <a
-  class={clsx('text-text visited:text-text hover:text-primary focus-visible:text-primary', {
-    'text-primary!': selected
+  class={clsx("text-text visited:text-text hover:text-primary focus-visible:text-primary", {
+    "text-primary!": selected,
   })}
   {href}
   {target}

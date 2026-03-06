@@ -3,7 +3,7 @@
     size?: string;
   }
 
-  let { size = '3rem' }: LogoProps = $props();
+  let { size = "3rem" }: LogoProps = $props();
 </script>
 
 <svg
@@ -14,7 +14,11 @@
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <rect width="256" height="256" class="fill-transparent" />
+  <rect
+    width="256"
+    height="256"
+    class="fill-transparent"
+  />
   <path
     d="M80 77.3703C80 63.5923 91.5745 52.643 105.331 53.4073L157.902 56.3279C168.056 56.892 176 65.2899 176 75.4592C176 87.9247 164.285 97.0713 152.192 94.048L103.283 81.8209C91.4566 78.8642 80 87.8092 80 100V77.3703Z"
     class="fill-primary"

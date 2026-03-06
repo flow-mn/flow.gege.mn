@@ -1,6 +1,6 @@
 <script lang="ts">
-  import clsx from 'clsx';
-  import type { Snippet } from 'svelte';
+  import clsx from "clsx";
+  import type { Snippet } from "svelte";
 
   interface $Props {
     children: Snippet;
@@ -14,9 +14,9 @@
 <div class="flex w-screen flex-row justify-center overflow-x-hidden">
   <section
     class:padMobile
-    class={clsx('w-full max-w-(--breakpoint-xl,100vw)', {
-      'xl:p-5': padMobile,
-      'min-h-[80vh]': fullHeight
+    class={clsx("max-w-(--breakpoint-xl,100vw) w-full", {
+      "xl:p-5": padMobile,
+      "min-h-[80vh]": fullHeight,
     })}
   >
     {@render children()}
