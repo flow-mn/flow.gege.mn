@@ -23,7 +23,7 @@
             <Logo size="1.75rem" />
             <span class="text-base font-bold tracking-tight">Flow</span>
           </a>
-          <p class="mt-2 max-w-[16rem] text-xs opacity-50 leading-relaxed">
+          <p class="mt-2 max-w-[16rem] text-xs leading-relaxed opacity-50">
             A free, open-source, privacy-first expense tracker for everyone.
           </p>
         </li>

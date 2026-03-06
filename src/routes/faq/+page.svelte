@@ -25,7 +25,7 @@
     <li>
       Golomt Bank (of Mongolia)<br />
       <button
-        class="text-primary cursor-pointer font-bold appearance-none"
+        class="text-primary cursor-pointer appearance-none font-bold"
         type="button"
         title="Click to copy IBAN"
         onclick={copyBankAccNo}
@@ -38,14 +38,15 @@
 
 <section class="flex flex-col items-center gap-4 px-4">
   <div class="w-full max-w-2xl">
-    <div class="mb-2 text-xs font-semibold uppercase tracking-widest text-primary opacity-80">Help</div>
+    <div class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Help</div>
     <h1 class="mb-10 text-4xl font-bold">Frequently Asked Questions</h1>
 
     <div class="flex flex-col [&_details]:mt-2 [&_p]:mt-2 [&_p]:max-w-prose [&_p]:leading-relaxed">
       <DocHeader id="what-is-flow">What is Flow?</DocHeader>
 
       <p class="opacity-70">
-        Flow is a free and open-source personal finance tracking app. As Flow is offline, you are in control of your data.
+        Flow is a free and open-source personal finance tracking app. As Flow is offline, you are in control of your
+        data.
       </p>
 
       <DocHeader id="where-do-i-download-flow">Where do I download Flow?</DocHeader>
@@ -73,8 +74,8 @@
       <ul class="list-inside list-disc opacity-70">
         <li>Please note that the precaution isn't guaranteed to succeed</li>
         <li>
-          Also iOS clears the temporary storage periodically, so you may find the backup file deleted if too much time has
-          passed.
+          Also iOS clears the temporary storage periodically, so you may find the backup file deleted if too much time
+          has passed.
         </li>
       </ul>
 
@@ -92,12 +93,12 @@
       <ul class="list-inside list-disc opacity-70 [&>li]:mt-1">
         <li>Ensure you've logged into your Apple Account on your device (in System Settings, not on Flow)</li>
         <li>
-          Ensure you've enabled iCloud Drive sync in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud Drive &gt;
-          Sync this iPhone (or your device's name)
+          Ensure you've enabled iCloud Drive sync in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud Drive
+          &gt; Sync this iPhone (or your device's name)
         </li>
         <li>
-          Ensure you've allowed Flow to access iCloud in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud Drive
-          &gt; Apps Syncing to iCloud Drive
+          Ensure you've allowed Flow to access iCloud in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud
+          Drive &gt; Apps Syncing to iCloud Drive
         </li>
         <li>
           Flow refuses to upload the backup if it's older than the current file on iCloud. You may want to check your
@@ -121,7 +122,7 @@
         <br />
         Reports are always displayed in your primary currency.
         <br />
-        <span class="opacity-60 text-sm">Cross-currency transfers are available on version 0.13.0 and later</span>
+        <span class="text-sm opacity-60">Cross-currency transfers are available on version 0.13.0 and later</span>
       </p>
 
       <DocHeader id="can-i-make-transfers-between-different-currency-accounts">
@@ -133,11 +134,17 @@
       <DocHeader id="how-to-import-from-other-apps">How to import data from other apps?</DocHeader>
 
       <details open>
-        <summary class="cursor-pointer opacity-60 hover:opacity-100 transition-opacity">Migrating from Ivy Wallet</summary>
-        <p class="opacity-70">Export a CSV backup from Ivy Wallet, and choose "Ivy Wallet" option in the import menu.</p>
+        <summary class="cursor-pointer opacity-60 transition-opacity hover:opacity-100"
+          >Migrating from Ivy Wallet</summary
+        >
+        <p class="opacity-70">
+          Export a CSV backup from Ivy Wallet, and choose "Ivy Wallet" option in the import menu.
+        </p>
       </details>
       <details open>
-        <summary class="cursor-pointer opacity-60 hover:opacity-100 transition-opacity">Migrating from other apps</summary>
+        <summary class="cursor-pointer opacity-60 transition-opacity hover:opacity-100"
+          >Migrating from other apps</summary
+        >
         <div class="mt-2 opacity-70">
           <ol class="list-inside list-decimal [&>li]:mt-1">
             <li>Export your data as CSV, or any other Google Sheets/Excel compatible format</li>
@@ -208,9 +215,9 @@
         TL;DR — Flow saves to iCloud, and the operating system uploads the file. This process cannot be sped up or
         altered.<br /><br />
 
-        Enabling iCloud sync on Flow will not immediately upload the data to iCloud. The operating system decides when it
-        gets uploaded, influenced by many factors including network connection, battery level, and time of day. Refer to
-        Apple's documentation for accurate information.<br /><br />
+        Enabling iCloud sync on Flow will not immediately upload the data to iCloud. The operating system decides when
+        it gets uploaded, influenced by many factors including network connection, battery level, and time of day. Refer
+        to Apple's documentation for accurate information.<br /><br />
 
         Interestingly, you don't need an internet connection for Flow to save to iCloud.
       </p>

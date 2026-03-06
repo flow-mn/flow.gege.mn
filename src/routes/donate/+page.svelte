@@ -8,11 +8,11 @@
 
 <section class="flex flex-col items-center gap-12 px-4">
   <div class="w-full max-w-2xl">
-    <div class="mb-2 text-xs font-semibold uppercase tracking-widest text-primary opacity-80">Support the project</div>
+    <div class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Support the project</div>
     <h1 class="mb-4 text-4xl font-bold">Donate to Flow</h1>
-    <p class="max-w-prose text-base opacity-60 leading-relaxed">
-      Flow is completely free and will always stay that way. As Flow doesn't generate any revenue, your
-      support means the world and helps keep the project alive.
+    <p class="max-w-prose text-base leading-relaxed opacity-60">
+      Flow is completely free and will always stay that way. As Flow doesn't generate any revenue, your support means
+      the world and helps keep the project alive.
     </p>
   </div>
 
@@ -48,7 +48,7 @@
       <div class="text-base">
         <button
           onclick={copyBankAccNo}
-          class="text-primary hover:opacity-80 cursor-pointer font-bold transition-opacity appearance-none"
+          class="text-primary cursor-pointer appearance-none font-bold transition-opacity hover:opacity-80"
           title="Click to copy IBAN"
         >
           MN17 0015 0011 0541 5662

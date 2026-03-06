@@ -18,7 +18,7 @@
     {@render icon?.()}
   </div>
   <div class="font-semibold">{title}</div>
-  <div class="text-sm opacity-60 leading-relaxed">
+  <div class="text-sm leading-relaxed opacity-60">
     {@render children()}
   </div>
 </div>
