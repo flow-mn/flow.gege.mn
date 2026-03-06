@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$lib/paraglide/messages";
   import DiscordLogo from "$lib/components/DiscordLogo.svelte";
   import FeatureCard from "$lib/components/FeatureCard.svelte";
   import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
@@ -6,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Flow - FOSS expense tracker</title>
+  <title>{m["home.title"]()}</title>
 </svelte:head>
 
 <!-- Blob decorations -->
@@ -20,13 +21,13 @@
 
 <!-- Hero -->
 <section class="flex flex-col items-center gap-8 px-4 text-center">
-  <div class="h-20 md:h-28"></div>
+  <div class="h-0 md:h-24"></div>
 
   <div
     data-aos="fade-up"
     class="border-primary/30 bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium"
   >
-    <span>Free &amp; Open Source</span>
+    <span>{m["home.hero.badge"]()}</span>
   </div>
 
   <h1
@@ -34,7 +35,7 @@
     data-aos-delay="60"
     class="max-w-2xl text-5xl font-bold leading-tight tracking-tight md:text-6xl"
   >
-    Track your finances,<br /><span class="text-primary">your way.</span>
+    {m["home.hero.heading_1"]()}<br /><span class="text-primary">{m["home.hero.heading_2"]()}</span>
   </h1>
 
   <p
@@ -42,7 +43,7 @@
     data-aos-delay="120"
     class="max-w-md text-base opacity-60 md:text-lg"
   >
-    Flow is a free, offline, privacy-first expense tracker. You control your data — always.
+    {m["home.hero.description"]()}
   </p>
 
   <div
@@ -60,7 +61,7 @@
     class="visited:text-text/50 text-text/50 hover:text-primary inline-flex items-center gap-2 text-sm transition-colors"
   >
     <DiscordLogo />
-    Join Discord for updates
+    {m["home.hero.discord_cta"]()}
   </a>
 
   <div class="h-20 md:h-28"></div>
@@ -72,51 +73,59 @@
     data-aos="fade-up"
     class="text-center"
   >
-    <p class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Features</p>
-    <h2 class="text-3xl font-bold">Everything you need</h2>
+    <p class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">
+      {m["home.features.label"]()}
+    </p>
+    <h2 class="text-3xl font-bold">{m["home.features.heading"]()}</h2>
   </div>
 
   <div class="grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-    <FeatureCard title="Free and open-source">
+    <FeatureCard title={m["home.features.foss.title"]()}>
       {#snippet icon()}
         🌐
       {/snippet}
-      Flow is a GPL v3.0 licensed, free, and open-source project.
+      {m["home.features.foss.description"]()}
     </FeatureCard>
 
-    <FeatureCard title="Privacy-focused">
+    <FeatureCard title={m["home.features.privacy.title"]()}>
       {#snippet icon()}
         🔐
       {/snippet}
-      Flow is offline<Fna n="1" />, and you control where your data goes<Fna n="2" />.
+      {m["home.features.privacy.description_1"]()}<Fna n="1" />{m["home.features.privacy.description_2"]()}<Fna
+        n="2"
+      />.
     </FeatureCard>
 
-    <FeatureCard title="Recurring transactions">
+    <FeatureCard title={m["home.features.automation.title"]()}>
       {#snippet icon()}
-        🔁
+        🤖
       {/snippet}
-      Easily manage your subscriptions, paychecks, and bills.
+      {m["home.features.automation.description_before"]()}
+      <a
+        href="https://eny.gege.mn/"
+        target="_blank">Eny</a
+      >{m["home.features.automation.description_after"]()}
     </FeatureCard>
 
-    <FeatureCard title="iCloud backup">
+    <FeatureCard title={m["home.features.icloud.title"]()}>
       {#snippet icon()}
         ☁️
       {/snippet}
-      Periodically back up your data to iCloud for safe-keeping.
+      {m["home.features.icloud.description"]()}
     </FeatureCard>
 
-    <FeatureCard title="Seamless UX">
+    <FeatureCard title={m["home.features.ux.title"]()}>
       {#snippet icon()}
         ✨
       {/snippet}
-      Flow is built to be as user-friendly as possible, with a clean and simple UI.
+      {m["home.features.ux.description"]()}
     </FeatureCard>
 
-    <FeatureCard title="Multi-currency">
+    <FeatureCard title={m["home.features.currency.title"]()}>
       {#snippet icon()}
         💱
       {/snippet}
-      Flow supports multiple currencies and can convert between them.<Fna n="1" />
+      {m["home.features.currency.description"]()}<Fna n="1" />
     </FeatureCard>
   </div>
 
@@ -128,13 +137,13 @@
   <div class="w-full max-w-5xl">
     <div class="border-t border-white/10 pt-6 text-xs opacity-50">
       <p id="fna1">
-        <span class="font-mono">[1]</span> Flow may need internet to fetch exchange rates if you use more than one currency.
+        <span class="font-mono">[1]</span>
+        {m["home.footnotes.fna_1"]()}
       </p>
       <br />
       <p id="fna2">
-        <span class="font-mono">[2]</span> If you use older Android devices, or devices with Windows or Linux-based operating
-        systems, Flow may store your data and backups in an easily accessible place. Make sure your device supports containerized
-        storage or other external access protection, as you are responsible for your financial data.
+        <span class="font-mono">[2]</span>
+        {m["home.footnotes.fna_2"]()}
       </p>
     </div>
   </div>

@@ -1,0 +1,202 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "home": {
+    "title": "Flow - FOSS expense tracker",
+    "hero": {
+      "badge": "Free & Open Source",
+      "heading_1": "Track your finances,",
+      "heading_2": "your way.",
+      "description": "Flow is a free, offline, privacy-first expense tracker. You control your data — always.",
+      "discord_cta": "Join Discord for updates"
+    },
+    "features": {
+      "label": "Features",
+      "heading": "Everything you need",
+      "foss": {
+        "title": "Free and open-source",
+        "description": "Flow is a GPL v3.0 licensed, free, and open-source project."
+      },
+      "privacy": {
+        "title": "Privacy-focused",
+        "description_1": "Flow is offline",
+        "description_2": ", and you control where your data goes"
+      },
+      "automation": {
+        "title": "Automated tracking",
+        "description_before": "Parse receipts with",
+        "description_after": ", or automate with iOS Shortcuts."
+      },
+      "icloud": {
+        "title": "iCloud backup",
+        "description": "Periodically back up your data to iCloud for safe-keeping."
+      },
+      "ux": {
+        "title": "Seamless UX",
+        "description": "Flow is built to be as user-friendly as possible, with a clean and simple UI."
+      },
+      "currency": {
+        "title": "Multi-currency",
+        "description": "Flow supports multiple currencies and can convert between them."
+      }
+    },
+    "footnotes": {
+      "fna_1": "Flow may need internet to fetch exchange rates if you use more than one currency.",
+      "fna_2": "If you use older Android devices, or devices with Windows or Linux-based operating systems, Flow may store your data and backups in an easily accessible place. Make sure your device supports containerized storage or other external access protection, as you are responsible for your financial data."
+    }
+  },
+  "donate": {
+    "title": "Donate — Flow",
+    "label": "Support the project",
+    "heading": "Donate to Flow",
+    "description": "Flow is completely free and will always stay that way. As Flow doesn't generate any revenue, your support means the world and helps keep the project alive.",
+    "bmac": {
+      "label": "Buy me a coffee",
+      "img_alt": "Buy me a coffee button"
+    },
+    "github": {
+      "label": "Sponsor on GitHub",
+      "iframe_title": "Sponsor flow-mn"
+    },
+    "golomt": {
+      "label": "Golomt Bank of Mongolia",
+      "account_name": "Batmend Ganbaatar",
+      "copy_title": "Click to copy IBAN",
+      "copy_hint": "Click the account number to copy it"
+    }
+  },
+  "guide": {
+    "callout": {
+      "tip": "Tip",
+      "warning": "Warning",
+      "note": "Note"
+    },
+    "articles": {
+      "getting_started": {
+        "title": "Getting Started",
+        "description": "Download Flow, set up your accounts, and record your first transaction."
+      },
+      "ios_shortcuts": {
+        "title": "iOS Shortcuts",
+        "description": "Automatically record expenses whenever you pay using Apple Pay."
+      }
+    },
+    "app_version_notice": "This guide is up to date with Flow {#b}{version}{/b}. Make sure you have the this version, or later installed.",
+    "title": "Flow Guide",
+    "sections": {
+      "integrations": "Integrations",
+      "backup": "Backup",
+      "basics": "Basics"
+    }
+  },
+  "faq": {
+    "title": "FAQ — Flow",
+    "label": "Help",
+    "heading": "Frequently Asked Questions",
+    "begging": {
+      "bmac": "Buy me a coffee",
+      "github": "Sponsor on GitHub:",
+      "golomt": "Golomt Bank (of Mongolia)",
+      "golomt_name": "Batmend Ganbaatar",
+      "copy_title": "Click to copy IBAN"
+    },
+    "what_is_flow": {
+      "q": "What is Flow?",
+      "a": "Flow is a free and open-source personal finance tracking app. As Flow is offline, you are in control of your data."
+    },
+    "where_download": {
+      "q": "Where do I download Flow?",
+      "a": "You can download Flow from:"
+    },
+    "can_export": {
+      "q": "Can I export all of my data?",
+      "a": "Yes, you can export JSON/ZIP backups which you can import to another device, and CSV files for analyzing your data in spreadsheet software (i.e., Excel, Google Sheets), which is not recoverable like JSON/ZIP backups."
+    },
+    "import_erased": {
+      "q": "Importing erased my data, how to recover?",
+      "a_before": "Flow does a precaution backup before starting to import. You can find the backup in",
+      "a_path": "Profile tab > Backup > Backup history",
+      "note_1": "Please note that the precaution isn't guaranteed to succeed",
+      "note_2": "Also iOS clears the temporary storage periodically, so you may find the backup file deleted if too much time has passed."
+    },
+    "online_sync": {
+      "q": "Does Flow have online sync?",
+      "a": "No."
+    },
+    "auto_backup": {
+      "q": "Does Flow have auto backup?",
+      "a": "Yes. If you're using Flow on iOS, you can also enable iCloud to save your backups. If you're using other OS, you're advised to download your manual and auto backups and save them elsewhere."
+    },
+    "icloud_not_working": {
+      "q": "Why iCloud sync isn't working?",
+      "step_1": "Ensure you've logged into your Apple Account on your device (in System Settings, not on Flow)",
+      "step_2": "Ensure you've enabled iCloud Drive sync in System Settings > Apple Account > iCloud > iCloud Drive > Sync this iPhone (or your device's name)",
+      "step_3": "Ensure you've allowed Flow to access iCloud in System Settings > Apple Account > iCloud > iCloud Drive > Apps Syncing to iCloud Drive",
+      "step_4": "Flow refuses to upload the backup if it's older than the current file on iCloud. You may want to check your device's date and time settings."
+    },
+    "works_offline": {
+      "q": "Does Flow work offline?",
+      "a": "Yes, but there are some occurances where Flow might use an internet connection:",
+      "item_1": "Downloading exchange rates information (only if you use more than one currencies)",
+      "item_2": "Clicking on buttons that lead to external internet resources (Discord, GitHub, etc.)"
+    },
+    "multi_currency": {
+      "q": "Does Flow support multi-currency",
+      "a_1": "Yes. Flow can generate reports and summaries involving accounts with different currency.",
+      "a_2": "Reports are always displayed in your primary currency.",
+      "a_note": "Cross-currency transfers are available on version 0.13.0 and later"
+    },
+    "currency_transfers": {
+      "q": "Can I make transfers between different currency accounts?",
+      "a": "Yes. Requires Flow version 0.13.0 or later"
+    },
+    "import_from_other": {
+      "q": "How to import data from other apps?",
+      "ivy_summary": "Migrating from Ivy Wallet",
+      "ivy_detail": "Export a CSV backup from Ivy Wallet, and choose \"Ivy Wallet\" option in the import menu.",
+      "other_summary": "Migrating from other apps",
+      "other_step_1": "Export your data as CSV, or any other Google Sheets/Excel compatible format",
+      "other_step_2_prefix": "Format your file to match Flow's CSV format.",
+      "other_step_2_link": "View template on Google Sheets",
+      "other_step_2_note": "Make sure you download the \"Template\" sheet",
+      "other_step_3": "Export the file as CSV."
+    },
+    "is_free": {
+      "q": "Is Flow free?",
+      "a": "Yes, Flow is absolutely free. All features are available without any limitations. Please consider supporting if you can, as I make Flow on the side and it doesn't generate any revenue ^^"
+    },
+    "max_accounts": {
+      "q": "How many accounts can I have at max?",
+      "a": "You can have as many accounts as you want."
+    },
+    "feature_request": {
+      "q": "I don't find X features, will it be implemented?",
+      "a_before": "If you have ideas to make Flow better, please submit to our GitHub",
+      "a_link": "issue tracker",
+      "a_after": ". As long as it aligns with Flow's vision, it will be implemented."
+    },
+    "why_free": {
+      "q": "Why is Flow free and/or open-source?",
+      "a": "Many benefit from open source, including me. This is my small contribution. Please consider supporting if you can, as I make Flow on the side and it doesn't generate any revenue ^^"
+    },
+    "recurring": {
+      "q": "Can I add recurring transactions?",
+      "a": "Recurring transactions are available on Flow 0.14.0 or later."
+    },
+    "how_recurring": {
+      "q": "How does the recurring transactions work?",
+      "a": "It's complicated."
+    },
+    "icloud_how": {
+      "q": "How does iCloud sync work?",
+      "a_1": "TL;DR — Flow saves to iCloud, and the operating system uploads the file. This process cannot be sped up or altered.",
+      "a_2": "Enabling iCloud sync on Flow will not immediately upload the data to iCloud. The operating system decides when it gets uploaded, influenced by many factors including network connection, battery level, and time of day. Refer to Apple's documentation for accurate information.",
+      "a_3": "Interestingly, you don't need an internet connection for Flow to save to iCloud."
+    },
+    "contact": {
+      "q": "How do I contact the maintainer?",
+      "a": "You can reach out through any of the following:",
+      "discord": "Flow's Discord channel",
+      "more_before": "More contact information on"
+    }
+  }
+}

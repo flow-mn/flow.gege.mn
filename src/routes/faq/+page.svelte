@@ -1,20 +1,22 @@
 <script lang="ts">
+  import { m } from "$lib/paraglide/messages";
   import DocHeader from "$lib/components/DocHeader.svelte";
   import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
   import { copyBankAccNo } from "$lib/copyBankAccNo";
 </script>
 
 <svelte:head>
-  <title>FAQ — Flow</title>
+  <title>{m["faq.title"]()}</title>
 </svelte:head>
 
 {#snippet beggingEntry()}
   <ul class="list-inside list-disc opacity-70">
     <li>
-      <a href="https://buymeacoffee.com/sadespresso">Buy me a coffee</a>
+      <a href="https://buymeacoffee.com/sadespresso">{m["faq.begging.bmac"]()}</a>
     </li>
     <li>
-      Sponsor on GitHub: <iframe
+      {m["faq.begging.github"]()}
+      <iframe
         src="https://github.com/sponsors/flow-mn/button"
         title="Sponsor flow-mn"
         height="32"
@@ -23,208 +25,185 @@
       ></iframe>
     </li>
     <li>
-      Golomt Bank (of Mongolia)<br />
+      {m["faq.begging.golomt"]()}<br />
       <button
         class="text-primary cursor-pointer appearance-none font-bold"
         type="button"
-        title="Click to copy IBAN"
+        title={m["faq.begging.copy_title"]()}
         onclick={copyBankAccNo}
       >
         MN17 0015 0011 0541 5662
-      </button> (Batmend Ganbaatar)
+      </button>
+      ({m["faq.begging.golomt_name"]()})
     </li>
   </ul>
 {/snippet}
 
 <section class="flex flex-col items-center gap-4 px-4">
   <div class="w-full max-w-2xl">
-    <div class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Help</div>
-    <h1 class="mb-10 text-4xl font-bold">Frequently Asked Questions</h1>
+    <div class="text-primary mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">{m["faq.label"]()}</div>
+    <h1 class="mb-10 text-4xl font-bold">{m["faq.heading"]()}</h1>
 
     <div class="flex flex-col [&_details]:mt-2 [&_p]:mt-2 [&_p]:max-w-prose [&_p]:leading-relaxed">
-      <DocHeader id="what-is-flow">What is Flow?</DocHeader>
+      <DocHeader id="what-is-flow">{m["faq.what_is_flow.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        Flow is a free and open-source personal finance tracking app. As Flow is offline, you are in control of your
-        data.
+        {m["faq.what_is_flow.a"]()}
       </p>
 
-      <DocHeader id="where-do-i-download-flow">Where do I download Flow?</DocHeader>
+      <DocHeader id="where-do-i-download-flow">{m["faq.where_download.q"]()}</DocHeader>
 
-      <p class="opacity-70">You can download Flow from:</p>
+      <p class="opacity-70">{m["faq.where_download.a"]()}</p>
       <br />
       <FlexDownloadButtons />
       <br />
 
-      <DocHeader id="can-i-export-all-of-my-data">Can I export all of my data?</DocHeader>
+      <DocHeader id="can-i-export-all-of-my-data">{m["faq.can_export.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        Yes, you can export JSON/ZIP backups which you can import to another device, and CSV files for analyzing your
-        data in spreadsheet software (i.e., Excel, Google Sheets), which is not recoverable like JSON/ZIP backups.
+        {m["faq.can_export.a"]()}
       </p>
 
-      <DocHeader id="importing-erased-my-data-how-to-recover">Importing erased my data, how to recover?</DocHeader>
+      <DocHeader id="importing-erased-my-data-how-to-recover">{m["faq.import_erased.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        Flow does a precaution backup before starting to import. You can find the backup in <b
-          >Profile tab &gt; Backup &gt; Backup history</b
-        >.
+        {m["faq.import_erased.a_before"]()} <b>{m["faq.import_erased.a_path"]()}</b>.
       </p>
       <br />
       <ul class="list-inside list-disc opacity-70">
-        <li>Please note that the precaution isn't guaranteed to succeed</li>
-        <li>
-          Also iOS clears the temporary storage periodically, so you may find the backup file deleted if too much time
-          has passed.
-        </li>
+        <li>{m["faq.import_erased.note_1"]()}</li>
+        <li>{m["faq.import_erased.note_2"]()}</li>
       </ul>
 
-      <DocHeader id="does-flow-have-online-sync">Does Flow have online sync?</DocHeader>
-      <p class="opacity-70">No.</p>
+      <DocHeader id="does-flow-have-online-sync">{m["faq.online_sync.q"]()}</DocHeader>
+      <p class="opacity-70">{m["faq.online_sync.a"]()}</p>
 
-      <DocHeader id="does-flow-have-autobackup">Does Flow have auto backup?</DocHeader>
+      <DocHeader id="does-flow-have-autobackup">{m["faq.auto_backup.q"]()}</DocHeader>
       <p class="opacity-70">
-        Yes. If you're using Flow on iOS, you can also enable iCloud to save your backups. If you're using other OS,
-        you're advised to download your manual and auto backups and save them elsewhere.
+        {m["faq.auto_backup.a"]()}
       </p>
 
-      <DocHeader id="why-icloud-sync-isnt-working">Why iCloud sync isn't working?</DocHeader>
+      <DocHeader id="why-icloud-sync-isnt-working">{m["faq.icloud_not_working.q"]()}</DocHeader>
 
       <ul class="list-inside list-disc opacity-70 [&>li]:mt-1">
-        <li>Ensure you've logged into your Apple Account on your device (in System Settings, not on Flow)</li>
-        <li>
-          Ensure you've enabled iCloud Drive sync in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud Drive
-          &gt; Sync this iPhone (or your device's name)
-        </li>
-        <li>
-          Ensure you've allowed Flow to access iCloud in System Settings &gt; Apple Account &gt; iCloud &gt; iCloud
-          Drive &gt; Apps Syncing to iCloud Drive
-        </li>
-        <li>
-          Flow refuses to upload the backup if it's older than the current file on iCloud. You may want to check your
-          device's date and time settings.
-        </li>
+        <li>{m["faq.icloud_not_working.step_1"]()}</li>
+        <li>{m["faq.icloud_not_working.step_2"]()}</li>
+        <li>{m["faq.icloud_not_working.step_3"]()}</li>
+        <li>{m["faq.icloud_not_working.step_4"]()}</li>
       </ul>
 
-      <DocHeader id="does-flow-work-offline">Does Flow work offline?</DocHeader>
+      <DocHeader id="does-flow-work-offline">{m["faq.works_offline.q"]()}</DocHeader>
 
-      <p class="opacity-70">Yes, but there are some occurances where Flow might use an internet connection:</p>
+      <p class="opacity-70">{m["faq.works_offline.a"]()}</p>
       <br />
       <ul class="list-inside list-disc opacity-70">
-        <li>Downloading exchange rates information (only if you use more than one currencies)</li>
-        <li>Clicking on buttons that lead to external internet resources (Discord, GitHub, etc.)</li>
+        <li>{m["faq.works_offline.item_1"]()}</li>
+        <li>{m["faq.works_offline.item_2"]()}</li>
       </ul>
 
-      <DocHeader id="does-flow-support-multi-currency">Does Flow support multi-currency</DocHeader>
+      <DocHeader id="does-flow-support-multi-currency">{m["faq.multi_currency.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        Yes. Flow can generate reports and summaries involving accounts with different currency.
+        {m["faq.multi_currency.a_1"]()}
         <br />
-        Reports are always displayed in your primary currency.
+        {m["faq.multi_currency.a_2"]()}
         <br />
-        <span class="text-sm opacity-60">Cross-currency transfers are available on version 0.13.0 and later</span>
+        <span class="text-sm opacity-60">{m["faq.multi_currency.a_note"]()}</span>
       </p>
 
       <DocHeader id="can-i-make-transfers-between-different-currency-accounts">
-        Can I make transfers between different currency accounts?
+        {m["faq.currency_transfers.q"]()}
       </DocHeader>
 
-      <p class="opacity-70">Yes. Requires Flow version 0.13.0 or later</p>
+      <p class="opacity-70">{m["faq.currency_transfers.a"]()}</p>
 
-      <DocHeader id="how-to-import-from-other-apps">How to import data from other apps?</DocHeader>
+      <DocHeader id="how-to-import-from-other-apps">{m["faq.import_from_other.q"]()}</DocHeader>
 
       <details open>
         <summary class="cursor-pointer opacity-60 transition-opacity hover:opacity-100"
-          >Migrating from Ivy Wallet</summary
+          >{m["faq.import_from_other.ivy_summary"]()}</summary
         >
         <p class="opacity-70">
-          Export a CSV backup from Ivy Wallet, and choose "Ivy Wallet" option in the import menu.
+          {m["faq.import_from_other.ivy_detail"]()}
         </p>
       </details>
       <details open>
         <summary class="cursor-pointer opacity-60 transition-opacity hover:opacity-100"
-          >Migrating from other apps</summary
+          >{m["faq.import_from_other.other_summary"]()}</summary
         >
         <div class="mt-2 opacity-70">
           <ol class="list-inside list-decimal [&>li]:mt-1">
-            <li>Export your data as CSV, or any other Google Sheets/Excel compatible format</li>
+            <li>{m["faq.import_from_other.other_step_1"]()}</li>
             <li>
               <div class="inline-block">
-                Format your file to match Flow's CSV format.<br /><br />
+                {m["faq.import_from_other.other_step_2_prefix"]()}<br /><br />
                 <a
                   target="_blank"
                   referrerpolicy="no-referrer"
                   rel="noopener"
                   href="https://docs.google.com/spreadsheets/d/1wxdJ1T8PSvzayxvGs7bVyqQ9Zu0DPQ1YwiBLy1FluqE/edit?usp=sharing"
-                  >View template on Google Sheets</a
+                  >{m["faq.import_from_other.other_step_2_link"]()}</a
                 >
                 <br />
-                Make sure you download the "Template" sheet
+                {m["faq.import_from_other.other_step_2_note"]()}
               </div>
             </li>
-            <li>Export the file as CSV.</li>
+            <li>{m["faq.import_from_other.other_step_3"]()}</li>
           </ol>
         </div>
       </details>
 
-      <DocHeader id="is-flow-free">Is Flow free?</DocHeader>
+      <DocHeader id="is-flow-free">{m["faq.is_free.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        Yes, Flow is absolutely free. All features are available without any limitations. Please consider supporting if
-        you can, as I make Flow on the side and it doesn't generate any revenue ^^
+        {m["faq.is_free.a"]()}
       </p>
       <br />
       {@render beggingEntry()}
 
-      <DocHeader id="how-many-accounts-can-i-have-at-max">How many accounts can I have at max?</DocHeader>
+      <DocHeader id="how-many-accounts-can-i-have-at-max">{m["faq.max_accounts.q"]()}</DocHeader>
 
-      <p class="opacity-70">You can have as many accounts as you want.</p>
+      <p class="opacity-70">{m["faq.max_accounts.a"]()}</p>
 
       <DocHeader id="i-dont-find-x-features-will-it-be-implemented">
-        I don't find X features, will it be implemented?
+        {m["faq.feature_request.q"]()}
       </DocHeader>
 
       <p class="opacity-70">
-        If you have ideas to make Flow better, please submit to our GitHub
+        {m["faq.feature_request.a_before"]()}
         <a
           href="https://github.com/flow-mn/flow/issues"
-          target="_blank">issue tracker</a
-        >. As long as it aligns with Flow's vision, it will be implemented.
+          target="_blank">{m["faq.feature_request.a_link"]()}</a
+        >{m["faq.feature_request.a_after"]()}
       </p>
 
-      <DocHeader id="why-is-flow-free-and-or-open-source">Why is Flow free and/or open-source?</DocHeader>
+      <DocHeader id="why-is-flow-free-and-or-open-source">{m["faq.why_free.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        Many benefit from open source, including me. This is my small contribution. Please consider supporting if you
-        can, as I make Flow on the side and it doesn't generate any revenue ^^
+        {m["faq.why_free.a"]()}
       </p>
       <br />
       {@render beggingEntry()}
 
-      <DocHeader id="can-i-add-recurring-transactions">Can I add recurring transactions?</DocHeader>
+      <DocHeader id="can-i-add-recurring-transactions">{m["faq.recurring.q"]()}</DocHeader>
 
-      <p class="opacity-70">Recurring transactions are available on Flow 0.14.0 or later.</p>
+      <p class="opacity-70">{m["faq.recurring.a"]()}</p>
 
-      <DocHeader id="how-does-recurring-transactions-work">How does the recurring transactions work?</DocHeader>
+      <DocHeader id="how-does-recurring-transactions-work">{m["faq.how_recurring.q"]()}</DocHeader>
 
-      <p class="opacity-70">It's complicated.</p>
+      <p class="opacity-70">{m["faq.how_recurring.a"]()}</p>
 
-      <DocHeader id="how-does-icloud-sync-work">How does iCloud sync work?</DocHeader>
+      <DocHeader id="how-does-icloud-sync-work">{m["faq.icloud_how.q"]()}</DocHeader>
 
       <p class="opacity-70">
-        TL;DR — Flow saves to iCloud, and the operating system uploads the file. This process cannot be sped up or
-        altered.<br /><br />
-
-        Enabling iCloud sync on Flow will not immediately upload the data to iCloud. The operating system decides when
-        it gets uploaded, influenced by many factors including network connection, battery level, and time of day. Refer
-        to Apple's documentation for accurate information.<br /><br />
-
-        Interestingly, you don't need an internet connection for Flow to save to iCloud.
+        {m["faq.icloud_how.a_1"]()}<br /><br />
+        {m["faq.icloud_how.a_2"]()}<br /><br />
+        {m["faq.icloud_how.a_3"]()}
       </p>
 
-      <DocHeader id="how-do-i-contact-the-maintainer">How do I contact the maintainer?</DocHeader>
+      <DocHeader id="how-do-i-contact-the-maintainer">{m["faq.contact.q"]()}</DocHeader>
 
-      <p class="opacity-70">You can reach out through any of the following:</p>
+      <p class="opacity-70">{m["faq.contact.a"]()}</p>
       <br />
       <ul class="list-inside list-disc opacity-70">
         <li>
@@ -242,11 +221,12 @@
         <li>
           <a
             href="https://discord.gg/Ndh9VDeZa4"
-            target="_blank">Flow's Discord channel</a
+            target="_blank">{m["faq.contact.discord"]()}</a
           >
         </li>
         <li>
-          More contact information on <a
+          {m["faq.contact.more_before"]()}
+          <a
             href="https://dev.gege.mn/#contact"
             target="_blank">dev.gege.mn</a
           >
