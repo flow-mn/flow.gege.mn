@@ -61,20 +61,3 @@
     </div>
   </div>
 </section>
-
-<style>
-  .gradient-border {
-    background:
-      linear-gradient(#1c1c1c, #1c1c1c) padding-box,
-      linear-gradient(
-          128deg,
-          rgba(242, 192, 255, 0.5) 0%,
-          rgba(255, 255, 255, 0.05) 30%,
-          rgba(242, 192, 255, 0.2) 60%,
-          rgba(255, 255, 255, 0.05) 80%,
-          rgba(242, 192, 255, 0.5) 100%
-        )
-        border-box;
-    border: 1px solid transparent;
-  }
-</style>

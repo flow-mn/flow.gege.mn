@@ -11,7 +11,7 @@
   let { children, fullHeight = false, padMobile = true }: $Props = $props();
 </script>
 
-<div class="flex w-screen flex-row justify-center overflow-x-hidden">
+<div class="row w-screen justify-center overflow-x-hidden">
   <section
     class:padMobile
     class={clsx("w-full max-w-7xl", {

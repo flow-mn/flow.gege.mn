@@ -23,8 +23,7 @@
       },
       "automation": {
         "title": "Automated tracking",
-        "description_before": "Parse receipts with",
-        "description_after": ", or automate with iOS Shortcuts."
+        "description": "Parse receipts with {#link href=|https://eny.gege.mn|}Eny{/link}, or automate with {#link href=|/guide/ios-shortcuts|}iOS Shortcuts{/link}."
       },
       "icloud": {
         "title": "iCloud backup",
@@ -77,7 +76,19 @@
       },
       "ios_shortcuts": {
         "title": "iOS Shortcuts",
-        "description": "Automatically record expenses whenever you pay using Apple Pay."
+        "description": "Automatically record expenses whenever you pay using Apple Pay.",
+        "steps": {
+          "1": "Open Shortucts app, and head to Automation tab",
+          "2": "Tap the + button, and choose \"Wallet\" as a trigger",
+          "3": "Add/remove the cards, and categories to be used if necessary",
+          "4": "(Recommended) Scroll down and choose \"Run Immediately\". You can toggle \"Notify When Run\" if you want to receive a notification every time the automation runs.",
+          "5": "Tap Next, and choose \"Create New Shortcut\"",
+          "6": "Find \"Flow\" from the list of apps, and choose \"Record an Expense\" action",
+          "7": "Tap on the \"Amount\" field, select variable \"Shortcut Input\" as the source. Make sure to select the \"Amount\" field from the transaction fields.",
+          "8": "(Optional) If you're using version older than 0.19.2, put placeholders in the empty fields to avoid having to fill them in every time. You can simply put a dash (-) as a placeholder.",
+          "9": "(Optional) Tap on the \"Account\" field, and type in the account. It must be an exact match. It will fallback to your default account if left empty, or if the account name doesn't match any of your accounts.",
+          "10": "Tap Next, review your automation, and tap Done to save it"
+        }
       }
     },
     "app_version_notice": "This guide is up to date with Flow {#b}{version}{/b}. Make sure you have the this version, or later installed.",

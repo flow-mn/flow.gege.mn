@@ -4,6 +4,7 @@
   import FeatureCard from "$lib/components/FeatureCard.svelte";
   import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
   import Fna from "$lib/components/Fna.svelte";
+  import { ParaglideMessage } from "@inlang/paraglide-js-svelte";
 </script>
 
 <svelte:head>
@@ -100,11 +101,19 @@
       {#snippet icon()}
         🤖
       {/snippet}
-      {m["home.features.automation.description_before"]()}
-      <a
-        href="https://eny.gege.mn/"
-        target="_blank">Eny</a
-      >{m["home.features.automation.description_after"]()}
+      <ParaglideMessage
+        inputs={{}}
+        message={m["home.features.automation.description"]}
+      >
+        {#snippet link({ children, options })}
+          <a
+            href={options.href}
+            target={options.href.startsWith("/") ? "_self" : "_blank"}
+          >
+            {@render children?.()}
+          </a>
+        {/snippet}
+      </ParaglideMessage>
     </FeatureCard>
 
     <FeatureCard title={m["home.features.icloud.title"]()}>
@@ -123,7 +132,7 @@
 
     <FeatureCard title={m["home.features.currency.title"]()}>
       {#snippet icon()}
-        💱
+        <span class="invert">💱</span>
       {/snippet}
       {m["home.features.currency.description"]()}<Fna n="1" />
     </FeatureCard>
