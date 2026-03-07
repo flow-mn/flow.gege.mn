@@ -3,9 +3,10 @@
     aspectRatio?: number;
     id: string;
     title?: string;
+    autoplay?: boolean;
   }
 
-  let { title, aspectRatio = 16 / 9, id }: Props = $props();
+  let { title, autoplay = true, aspectRatio = 16 / 9, id }: Props = $props();
 </script>
 
 <div
@@ -14,7 +15,7 @@
 >
   <iframe
     {title}
-    src="https://www.youtube.com/embed/{id}"
+    src="https://www.youtube.com/embed/{id}{autoplay ? '?autoplay=1&mute=1' : ''}"
     frameborder="0"
     allowfullscreen
     class="absolute bottom-0 left-0 right-0 top-0 h-full w-full"
