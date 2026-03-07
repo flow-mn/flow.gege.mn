@@ -1,15 +1,13 @@
 <script lang="ts">
+  import "aos/dist/aos.css";
+  import "../app.css";
+
   import { page } from "$app/state";
-  import { locales, localizeHref } from "$lib/paraglide/runtime";
   import Footer from "$lib/components/Footer.svelte";
   import Frame from "$lib/components/Frame.svelte";
   import NavBar from "$lib/components/NavBar.svelte";
-  import AOS from "aos";
-  import "aos/dist/aos.css";
+  import { locales, localizeHref } from "$lib/paraglide/runtime";
   import type { Snippet } from "svelte";
-  import "../app.css";
-
-  AOS.init();
 
   let { children }: { children: Snippet } = $props();
 </script>
