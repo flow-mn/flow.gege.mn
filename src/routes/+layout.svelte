@@ -1,5 +1,4 @@
 <script lang="ts">
-  import "aos/dist/aos.css";
   import "../app.css";
 
   import { page } from "$app/state";
@@ -15,7 +14,9 @@
 <NavBar />
 
 <Frame fullHeight>
-  <main class="mt-(--navbar-height,0px) flex w-full flex-col pb-16 pt-8">{@render children()}</main>
+  <main class="mt-(--navbar-height,0px) col w-full pb-16 pt-8">
+    {@render children()}
+  </main>
 </Frame>
 
 <Footer />

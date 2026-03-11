@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import { afterNavigate } from "$app/navigation";
   import clsx from "clsx";
   import type { Snippet } from "svelte";
@@ -13,10 +14,12 @@
 
   let { children, target, href, class: className }: Props = $props();
 
-  let selected = $state(window.location.pathname === href);
+  let selected = $state(browser && window.location.pathname === href);
 
   afterNavigate(() => {
-    selected = window.location.pathname === href;
+    if (browser) {
+      selected = window.location.pathname === href;
+    }
   });
 </script>
 
