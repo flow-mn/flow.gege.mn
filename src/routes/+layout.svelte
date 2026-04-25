@@ -9,23 +9,31 @@
   import type { Snippet } from "svelte";
 
   let { children }: { children: Snippet } = $props();
+
+  const isEmbed = $derived(page.url.pathname.startsWith("/embed/"));
 </script>
 
-<NavBar />
-
-<Frame fullHeight>
-  <main class="mt-(--navbar-height,0px) col w-full pb-16 pt-8">
+{#if isEmbed}
+  <main class="min-h-screen w-full">
     {@render children()}
   </main>
-</Frame>
+{:else}
+  <NavBar />
 
-<Footer />
+  <Frame fullHeight>
+    <main class="mt-(--navbar-height,0px) col w-full pb-16 pt-8">
+      {@render children()}
+    </main>
+  </Frame>
 
-<div style="display:none">
-  {#each locales as locale}
-    <a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
-  {/each}
-</div>
+  <Footer />
+
+  <div style="display:none">
+    {#each locales as locale}
+      <a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
+    {/each}
+  </div>
+{/if}
 
 <style>
   :global(html) {

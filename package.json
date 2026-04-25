@@ -27,7 +27,6 @@
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-svelte": "^2.46.1",
     "globals": "^15.15.0",
-    "mdsvex": "^0.12.6",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.6.14",
@@ -41,7 +40,8 @@
   "dependencies": {
     "@inlang/paraglide-js-svelte": "^1.0.1",
     "@tailwindcss/typography": "^0.5.16",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "marked": "^18.0.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

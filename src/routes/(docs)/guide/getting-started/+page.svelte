@@ -1,6 +1,5 @@
 <script lang="ts">
   import GuideCallout from "$lib/components/guide/GuideCallout.svelte";
-  import GuideVideo from "$lib/components/guide/GuideVideo.svelte";
   import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
 </script>
 
@@ -14,12 +13,6 @@
   <p class="text-primary not-prose mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Basics</p>
   <h1 class="not-prose mb-2 text-3xl font-bold">Getting Started with Flow</h1>
   <p class="not-prose mb-8 text-base opacity-50">Set up Flow and record your first transaction in minutes.</p>
-
-  <!-- Overview video -->
-  <GuideVideo
-    youtubeId="REPLACE_WITH_VIDEO_ID"
-    title="Getting Started with Flow"
-  />
 
   <h2>1. Download Flow</h2>
 
@@ -40,9 +33,12 @@
 
   <ol>
     <li>Open Flow and tap the <strong>Accounts</strong> tab.</li>
-    <li>Tap <strong>+ New account</strong>.</li>
-    <li>Give it a name (e.g. "Checking"), pick a currency, and set your current balance.</li>
-    <li>Tap <strong>Save</strong>.</li>
+    <li>Tap the <strong>+</strong> button on that tab.</li>
+    <li>
+      Give it a name (e.g. "Checking"), pick a currency and account type, then tap <strong>Update balance</strong> to set
+      today's balance.
+    </li>
+    <li>Tap the <strong>✓</strong> at the top right to save.</li>
   </ol>
 
   <GuideCallout
@@ -58,13 +54,26 @@
   <p>Transactions are the core of Flow. Every expense or income gets logged here.</p>
 
   <ol>
-    <li>Tap the <strong>+</strong> button at the bottom of the screen.</li>
     <li>
-      Choose <strong>Expense</strong> or <strong>Income</strong>.
+      Tap the <strong>+</strong> button at the bottom of the screen — the FAB is dedicated to creating new transactions.
     </li>
-    <li>Enter the amount, pick a category, and select the account.</li>
-    <li>Optionally add a title or note, then tap <strong>Save</strong>.</li>
+    <li>
+      Pick <strong>Expense</strong>, <strong>Income</strong>, or <strong>Transfer</strong> from the type chip at the top.
+    </li>
+    <li>Type the amount on the numpad and tap the <strong>✓</strong> on the numpad to commit it.</li>
+    <li>
+      Pick the account, category, and (optionally) a title, then tap the <strong>✓</strong> at the top right to save.
+    </li>
   </ol>
+
+  <GuideCallout
+    variant="tip"
+    title="Customize the order"
+  >
+    The questions Flow asks during transaction entry are configurable at <strong
+      >Profile → Preferences → Transaction Entry</strong
+    >. Add, remove, or reorder steps to match how you actually enter data.
+  </GuideCallout>
 
   <GuideCallout
     variant="tip"
@@ -79,8 +88,8 @@
   <h2>4. Explore your reports</h2>
 
   <p>
-    After adding a few transactions, head to the <strong>Reports</strong> tab to see a breakdown of your spending by category,
-    account, and time period.
+    After adding a few transactions, head to the <strong>Stats</strong> tab to see your spending trend over a chosen time
+    period. From there you can drill down into any point on the chart for the underlying transactions.
   </p>
 
   <p>

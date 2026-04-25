@@ -78,7 +78,7 @@
         "title": "iOS Shortcuts",
         "description": "Automatically record expenses whenever you pay using Apple Pay.",
         "steps": {
-          "1": "Open Shortucts app, and head to Automation tab",
+          "1": "Open Shortcuts app, and head to Automation tab",
           "2": "Tap the + button, and choose \"Wallet\" as a trigger",
           "3": "Add/remove the cards, and categories to be used if necessary",
           "4": "(Recommended) Scroll down and choose \"Run Immediately\". You can toggle \"Notify When Run\" if you want to receive a notification every time the automation runs.",

@@ -21,6 +21,9 @@
       </li>
       <li class="spacer w-full flex-1"></li>
       <li>
+        <Item href="/guide">Guide</Item>
+      </li>
+      <li>
         <Item href="/donate">Donate</Item>
       </li>
       <li>

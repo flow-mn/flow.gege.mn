@@ -83,10 +83,6 @@
 
   <!-- Content -->
   <div class="min-w-0 flex-1">
-    {#if selectedArticle}
-      <h1>{selectedArticle.emoji} {selectedArticle.title}</h1>
-      <div class="h-2"></div>
-    {/if}
     {#if selectedArticle?.youtube?.id}
       <YoutubeEmbed id={selectedArticle!.youtube!.id} />
       <div class="h-2"></div>
