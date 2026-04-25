@@ -38,7 +38,7 @@
     {#snippet overlay()}
       <Marker
         x={50}
-        y={70}
+        y={80}
         n={1}
       />
     {/snippet}
