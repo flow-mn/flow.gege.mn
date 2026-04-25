@@ -107,6 +107,20 @@
     </li>
   </ul>
 
+  <AnnotatedScreenshot
+    src="/guide/categories/tag-types.png"
+    alt="The new tag screen with the Generic, Location, and Person type chips at the top."
+    aspect="9/16"
+  >
+    {#snippet overlay()}
+      <Marker
+        x={50}
+        y={32}
+        n={1}
+      />
+    {/snippet}
+  </AnnotatedScreenshot>
+
   <GuideCallout
     variant="info"
     title="Location suggestions need geolocation on"

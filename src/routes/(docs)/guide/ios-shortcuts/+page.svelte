@@ -1,7 +1,5 @@
 <script lang="ts">
   import GuideCallout from "$lib/components/guide/GuideCallout.svelte";
-  import AnnotatedScreenshot from "$lib/components/guide/AnnotatedScreenshot.svelte";
-  import Marker from "$lib/components/guide/Marker.svelte";
 </script>
 
 <article
@@ -36,21 +34,6 @@
     <strong>+</strong> button to start a new automation.
   </p>
 
-  <AnnotatedScreenshot
-    src="/guide/ios-shortcuts/01-automation-tab.png"
-    alt="The Shortcuts app's Automation tab with the + button highlighted."
-    aspect="9/16"
-    placeholder
-  >
-    {#snippet overlay()}
-      <Marker
-        x={92}
-        y={10}
-        n={1}
-      />
-    {/snippet}
-  </AnnotatedScreenshot>
-
   <h2>Step 2 — Choose the Wallet trigger</h2>
 
   <p>
@@ -64,13 +47,6 @@
     Apple Pay charge to be logged.
   </p>
 
-  <AnnotatedScreenshot
-    src="/guide/ios-shortcuts/02-wallet-trigger.png"
-    alt="The Wallet trigger setup screen with card and category filters."
-    aspect="9/16"
-    placeholder
-  />
-
   <h2>Step 3 — Run immediately (recommended)</h2>
 
   <p>
@@ -81,39 +57,12 @@
 
   <p>Tap <strong>Next</strong>, then choose <strong>Create New Shortcut</strong>.</p>
 
-  <AnnotatedScreenshot
-    src="/guide/ios-shortcuts/03-run-immediately.png"
-    alt="The Run Immediately option on the Wallet trigger configuration screen."
-    aspect="9/16"
-    placeholder
-  >
-    {#snippet overlay()}
-      <Marker
-        x={50}
-        y={45}
-        n={1}
-      />
-      <Marker
-        x={50}
-        y={60}
-        n={2}
-      />
-    {/snippet}
-  </AnnotatedScreenshot>
-
   <h2>Step 4 — Add Flow's "Record an Expense" action</h2>
 
   <p>
     In the new shortcut, search for <strong>Flow</strong> in the action picker. Pick the
     <strong>Record an Expense</strong> action.
   </p>
-
-  <AnnotatedScreenshot
-    src="/guide/ios-shortcuts/04-flow-action.png"
-    alt="The Record an Expense action under Flow in the Shortcuts action picker."
-    aspect="9/16"
-    placeholder
-  />
 
   <h2>Step 5 — Wire up the amount</h2>
 
@@ -122,26 +71,6 @@
     the data the Wallet trigger passes in. From the field picker that follows, select <strong>Amount</strong> so Flow receives
     just the number, not the whole transaction blob.
   </p>
-
-  <AnnotatedScreenshot
-    src="/guide/ios-shortcuts/05-shortcut-input-amount.png"
-    alt="Selecting Shortcut Input as the source for Amount, then drilling down to the Amount sub-field."
-    aspect="9/16"
-    placeholder
-  >
-    {#snippet overlay()}
-      <Marker
-        x={50}
-        y={30}
-        n={1}
-      />
-      <Marker
-        x={50}
-        y={55}
-        n={2}
-      />
-    {/snippet}
-  </AnnotatedScreenshot>
 
   <GuideCallout
     variant="warning"
@@ -165,13 +94,6 @@
     Tap <strong>Next</strong>, review the automation summary, and tap <strong>Done</strong>. From this point, every
     Apple Pay charge that matches your trigger filters will quietly create a matching expense in Flow.
   </p>
-
-  <AnnotatedScreenshot
-    src="/guide/ios-shortcuts/06-done.png"
-    alt="The completed automation in the Shortcuts app, ready to fire on the next Apple Pay tap."
-    aspect="9/16"
-    placeholder
-  />
 
   <GuideCallout
     variant="tip"

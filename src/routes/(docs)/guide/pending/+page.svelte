@@ -64,7 +64,6 @@
     src="/guide/pending/list.png"
     alt="Pending transactions screen with a list of upcoming transactions awaiting approval."
     aspect="9/16"
-    placeholder
   >
     {#snippet overlay()}
       <Marker

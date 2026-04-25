@@ -34,7 +34,6 @@
     src="/guide/attachments/add.png"
     alt="The attachments section of the transaction page with an add-photo button."
     aspect="9/16"
-    placeholder
   >
     {#snippet overlay()}
       <Marker
