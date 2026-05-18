@@ -69,9 +69,11 @@ Practical advice: start with 8–12 broad buckets, split only when one gets unco
 
 - **Regular tag** — a free-form label (default). Examples: *trip tokyo*, *reimbursable*, *gift*, *kid*, *partner*.
 - **Contact tag** — a person. Useful for "who did I split this with" or "who owes me money".
-- **Location tag** — a place. Suggested by **proximity** when recording a transaction near a previously-used place.
+- **Location tag** — a place. Suggested by **proximity** — Flow proposes a previously-used location tag if it sits within ~50 m of either the transaction's saved location *or* the device's current GPS reading.
 
 Proximity suggestions for location tags require geolocation to be turned on at **Profile → Preferences → Transaction location** (and the Flow location permission). Without that, location tags still work — they just don't get proximity-based suggestions.
+
+Since **v0.22.0**, suggestions also fire when editing an existing transaction (not just at creation time), and Flow now considers the device's live GPS, not only the transaction's saved location. So you can open an old, location-less transaction at the same coffee shop and still be offered the right tag.
 
 ### Renaming and merging
 
@@ -566,7 +568,29 @@ The Search chip on the home tab supports four modes (all case-insensitive):
 
 ## Bulk operations
 
-There is currently **no multi-select for transactions** — operations like delete, edit, or change-category run one at a time. (Subject to change in future versions.)
+Multi-select shipped in **v0.22.0**.
+
+### Entering selection mode
+
+Tap the **leading icon** (the account or category icon) on any transaction row. The row becomes selected; the rest of the rows now have tappable areas anywhere to toggle them in or out of the selection.
+
+### Exiting
+
+Use the system back gesture / back button. That clears the selection without leaving the page.
+
+### Available actions
+
+A bottom action sheet exposes:
+
+- **Confirm all** — only when every selected transaction is pending.
+- **Delete** — moves the selection to the trash bin. (Becomes **Recover** when viewing the trash.)
+- **Change category** — disabled if the selection includes a transfer, or if the selected transactions span multiple currencies.
+- **Change account** — same disable rules as Change category.
+- **Recover** — only when viewing the trash bin.
+
+### Where it works
+
+The home feed, the transaction list inside an account, the transaction list inside a category, and the full Transactions page (trash bin / pending). It is **not** available in Stats drill-downs.
 
 ## Support Flow page
 

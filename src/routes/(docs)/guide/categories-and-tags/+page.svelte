@@ -102,8 +102,9 @@
       <strong>Contact tag</strong> — a person. Useful for "who did I split this with" or "who owes me money".
     </li>
     <li>
-      <strong>Location tag</strong> — a place. Flow suggests location tags automatically when you record a transaction near
-      a place you've used before — proximity-based.
+      <strong>Location tag</strong> — a place. Flow suggests location tags automatically when you're within about 50 m
+      of a place you've used before — based on either the transaction's saved location <em>or</em> your device's current
+      GPS reading.
     </li>
   </ul>
 
@@ -129,6 +130,15 @@
       >Profile → Preferences → Transaction location</strong
     > (and grant Flow location permission). Without it, location tags work like regular tags — you can still create and use
     them, you just won't get proximity-based suggestions.
+  </GuideCallout>
+
+  <GuideCallout
+    variant="tip"
+    title="New in v0.22.0 — suggestions also use your live location"
+  >
+    Suggestions now fire when you <em>edit</em> a transaction too, not just at creation, and Flow considers your device's
+    current GPS in addition to whatever location the transaction was saved with. Open an old, locationless transaction at
+    the same coffee shop and you'll still be offered the right tag.
   </GuideCallout>
 
   <h2>Using categories &amp; tags in reports</h2>

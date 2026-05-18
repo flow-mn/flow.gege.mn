@@ -171,4 +171,29 @@
       <a href="/guide/ios-shortcuts">Shortcuts integration</a>.
     </li>
   </ul>
+
+  <h2>Bulk actions <span class="text-primary text-xs font-semibold opacity-80">New in v0.22.0</span></h2>
+
+  <p>
+    To act on a batch of transactions at once, <strong>tap the leading icon</strong> (the small account or category icon on
+    the left of any transaction row). The row turns into a selection chip — from there, tapping anywhere on any other row
+    toggles it in or out of the selection. Press the system back gesture to exit selection.
+  </p>
+
+  <p>The bottom action sheet exposes:</p>
+
+  <ul>
+    <li><strong>Confirm all</strong> — only when everything selected is pending.</li>
+    <li><strong>Delete</strong> — moves the selection to the trash bin. Becomes <strong>Recover</strong> when you're viewing the trash.</li>
+    <li><strong>Change category</strong> — disabled if the selection contains a transfer or mixes currencies.</li>
+    <li><strong>Change account</strong> — same disable rules as Change category.</li>
+  </ul>
+
+  <GuideCallout
+    variant="info"
+    title="Where bulk actions work"
+  >
+    Multi-select is available on the home feed, inside an account's transaction list, inside a category's transaction list,
+    and on the trash / pending pages. It isn't available on Stats drill-downs.
+  </GuideCallout>
 </article>
