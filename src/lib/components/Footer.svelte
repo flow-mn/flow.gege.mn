@@ -42,12 +42,6 @@
             </li>
             <li>
               <a
-                href="https://discord.gg/Ndh9VDeZa4"
-                target="_blank">Join Discord</a
-              >
-            </li>
-            <li>
-              <a
                 href="https://www.reddit.com/r/flow_app/"
                 target="_blank">Join r/flow_app</a
               >
@@ -85,12 +79,6 @@
         >
           <ul>
             <Header>Contribute</Header>
-            <li>
-              <a
-                href="https://github.com/flow-mn/flow/issues/new"
-                target="_blank">Report an issue</a
-              >
-            </li>
             <li>
               <a
                 href="https://buymeacoffee.com/sadespresso"

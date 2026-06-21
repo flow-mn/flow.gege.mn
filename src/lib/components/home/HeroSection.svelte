@@ -1,5 +1,4 @@
 <script lang="ts">
-  import DiscordLogo from "$lib/components/DiscordLogo.svelte";
   import FlexDownloadButtons from "$lib/components/FlexDownloadButtons.svelte";
   import { m } from "$lib/paraglide/messages";
 </script>
@@ -35,16 +34,6 @@
   >
     <FlexDownloadButtons />
   </div>
-
-  <a
-    data-aos-delay="240"
-    href="https://discord.gg/Ndh9VDeZa4"
-    target="_blank"
-    class="visited:text-text/50 text-text/50 hover:text-primary trig-target inline-flex items-center gap-2 text-sm transition-colors"
-  >
-    <DiscordLogo />
-    {m["home.hero.discord_cta"]()}
-  </a>
 
   <div class="h-20 md:h-28"></div>
 </section>

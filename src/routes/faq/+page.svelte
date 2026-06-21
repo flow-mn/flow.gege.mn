@@ -170,11 +170,7 @@
       </DocHeader>
 
       <p class="opacity-70">
-        {m["faq.feature_request.a_before"]()}
-        <a
-          href="https://github.com/flow-mn/flow/issues"
-          target="_blank">{m["faq.feature_request.a_link"]()}</a
-        >{m["faq.feature_request.a_after"]()}
+        {m["faq.feature_request.a"]()}
       </p>
 
       <DocHeader id="why-is-flow-free-and-or-open-source">{m["faq.why_free.q"]()}</DocHeader>
@@ -216,12 +212,6 @@
           <a
             href="mailto:flow@gege.mn"
             target="_blank">flow@gege.mn</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://discord.gg/Ndh9VDeZa4"
-            target="_blank">{m["faq.contact.discord"]()}</a
           >
         </li>
         <li>

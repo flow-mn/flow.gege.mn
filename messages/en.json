@@ -6,8 +6,7 @@
       "badge": "Free & Open Source",
       "heading_1": "Track your finances,",
       "heading_2": "your way.",
-      "description": "Flow is a free, offline, privacy-first expense tracker. You control your data — always.",
-      "discord_cta": "Join Discord for updates"
+      "description": "Flow is a free, offline, privacy-first expense tracker. You control your data — always."
     },
     "features": {
       "label": "Features",
@@ -148,7 +147,7 @@
       "q": "Does Flow work offline?",
       "a": "Yes, but there are some occurances where Flow might use an internet connection:",
       "item_1": "Downloading exchange rates information (only if you use more than one currencies)",
-      "item_2": "Clicking on buttons that lead to external internet resources (Discord, GitHub, etc.)"
+      "item_2": "Clicking on buttons that lead to external internet resources (GitHub, Reddit, etc.)"
     },
     "multi_currency": {
       "q": "Does Flow support multi-currency",
@@ -181,9 +180,7 @@
     },
     "feature_request": {
       "q": "I don't find X features, will it be implemented?",
-      "a_before": "If you have ideas to make Flow better, please submit to our GitHub",
-      "a_link": "issue tracker",
-      "a_after": ". As long as it aligns with Flow's vision, it will be implemented."
+      "a": "If you have ideas to make Flow better, feel free to reach out. As long as it aligns with Flow's vision, it will be implemented."
     },
     "why_free": {
       "q": "Why is Flow free and/or open-source?",
@@ -206,7 +203,6 @@
     "contact": {
       "q": "How do I contact the maintainer?",
       "a": "You can reach out through any of the following:",
-      "discord": "Flow's Discord channel",
       "more_before": "More contact information on"
     }
   }

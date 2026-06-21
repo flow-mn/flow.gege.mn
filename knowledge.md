@@ -458,7 +458,7 @@ The Profile tab is Flow's "everything else" hub. Top to bottom:
 
 - A **profile card** (avatar + display name).
 - **Accounts**, **Categories**, **Tags**, **Pending transactions** — direct entries to those manager screens.
-- **Community** section: Join Discord, Support Flow, Contributors, Recommend Flow (system share sheet), Visit GitHub repo. (No "Buy me a coffee" link — disallowed by Apple's policy. Sponsorship goes through GitHub.)
+- **Community** section: Support Flow, Contributors, Recommend Flow (system share sheet), Visit GitHub repo. (No "Buy me a coffee" link — disallowed by Apple's policy. Sponsorship goes through GitHub.)
 - **Other** section: **Recently Deleted** (the trash bin's contents), **Backup**, **Import**, **Preferences**.
 - Footer: app version (`v…`) and a "with love from the creator" link to the maintainer's GitHub.
 
