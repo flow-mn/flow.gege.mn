@@ -1,8 +1,5 @@
 <script lang="ts">
   import GuideCallout from "$lib/components/guide/GuideCallout.svelte";
-  import AnnotatedScreenshot from "$lib/components/guide/AnnotatedScreenshot.svelte";
-  import Marker from "$lib/components/guide/Marker.svelte";
-  import Highlight from "$lib/components/guide/Highlight.svelte";
 </script>
 
 <article
@@ -11,105 +8,132 @@
   <p class="text-primary not-prose mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">Insights</p>
   <h1 class="not-prose mb-2 text-3xl font-bold">Reports &amp; stats</h1>
   <p class="not-prose mb-8 text-base opacity-50">
-    Where your money actually went over a chosen time period — totals, daily averages, and a trend chart you can drill
-    into.
+    Where your money actually went — cash flow, pace, top categories, and on-device observations about what changed.
   </p>
 
   <h2>The Stats tab</h2>
 
   <p>
-    The <strong>Stats</strong> tab is Flow's report room. At the top is a period picker and a granularity row (<strong
-      >By month</strong
-    >
-    / <strong>More options</strong>). Below is the headline total, a trend chart for the selected period, and per-day
-    averages. Everything is computed locally from your transactions — no server, no delay.
+    The <strong>Stats</strong> tab is Flow's report room. Everything is computed locally from your transactions — no
+    server, no delay. It has two parts: cards that follow the time range you pick, and <strong>Insights</strong> tiles that
+    each look at their own window.
   </p>
-
-  <AnnotatedScreenshot
-    src="/guide/reports/stats.png"
-    alt="The Stats tab — period picker, By month / More options row, headline total, trend chart, and per-day averages."
-    aspect="9/16"
-  >
-    {#snippet overlay()}
-      <Highlight
-        x={5}
-        y={6}
-        w={90}
-        h={8}
-        label="Period"
-      />
-      <Marker
-        x={50}
-        y={17}
-        n={1}
-      />
-      <Marker
-        x={30}
-        y={23}
-        n={2}
-      />
-      <Marker
-        x={50}
-        y={45}
-        n={3}
-      />
-      <Marker
-        x={50}
-        y={75}
-        n={4}
-      />
-    {/snippet}
-  </AnnotatedScreenshot>
-
-  <ol>
-    <li><strong>By month / More options</strong> — change how the chart is sliced and what it includes.</li>
-    <li><strong>Headline total</strong> — total expense for the period, with a delta vs. the previous period.</li>
-    <li><strong>Trend chart</strong> — current period overlaid on the previous one for comparison.</li>
-    <li><strong>Averages, by day</strong> — Expense and Income cards summarizing the period's daily mean.</li>
-  </ol>
 
   <h2>Picking a time period</h2>
 
   <p>
-    The header shows the current period (e.g. <em>April</em>). Tap the <strong>‹ ›</strong> arrows on either side to
-    step backward or forward — flick through every month of last year without re-picking dates. Tap the period name
-    itself, or the <strong>More options</strong> link, to change granularity (week / month / year / custom range).
+    The Stats tab opens on the current month. Tap the <strong>‹ ›</strong> arrows (or swipe) to step backward or
+    forward, and tap the month or year to jump straight to one. <strong>More options</strong> offers quick picks —
+    <strong>This week</strong>, <strong>This month</strong>, <strong>This year</strong>, <strong>Last 30 days</strong>,
+    <strong>All time</strong> — and the <strong>By week</strong>, <strong>By month</strong>,
+    <strong>By year</strong>, and <strong>Custom range</strong> modes.
   </p>
 
-  <h2>Drilling in</h2>
+  <p>
+    The Stats tab has only a time control. It doesn't follow the home feed's filters, and there's no account or currency
+    filter.
+  </p>
 
-  <p>Tap a point on the trend chart, or one of the average cards, to drill down to:</p>
+  <h2>For the selected range</h2>
 
   <ul>
-    <li>Just the transactions that contributed.</li>
-    <li>A sub-breakdown by category or account.</li>
+    <li>
+      <strong>Worth knowing</strong> — short observations about the month (see below). Shown when a single month is selected.
+    </li>
+    <li><strong>Cash flow</strong> — money in and money out.</li>
+    <li>
+      <strong>Pace</strong> — a <strong>Projected</strong> end-of-period total while the range includes today (<strong
+        >Total spent</strong
+      > otherwise), your average per day, and the trend vs. the previous period.
+    </li>
+    <li>
+      <strong>Top categories</strong> — your three biggest expense categories, in their own colors. Tap it for the full ranked
+      list.
+    </li>
+  </ul>
+
+  <p>Transfers never count as income or spending — moving money between your own accounts isn't either.</p>
+
+  <h2>Categories, ranked</h2>
+
+  <p>
+    Tapping <strong>Top categories</strong> opens every category as a ranked list for the same range, with
+    <strong>Expense</strong> / <strong>Income</strong> tabs. Each row shows the category's amount, its share of the total,
+    and a share bar. A summary on top shows the total and how many categories and transactions it covers. Tap a category
+    to open it with the same range.
+  </p>
+
+  <p>
+    Switch from <strong>List</strong> to <strong>Chart</strong> for a pie chart. Slices use your category colors, and the
+    middle shows the total — or the selected slice's name and amount. Tap a selected slice again to open that category.
+  </p>
+
+  <h2 id="worth-knowing">Worth knowing</h2>
+
+  <p>
+    <strong>Worth knowing</strong> points out a few things in the selected month that stand out compared to your usual —
+    at most three at a time:
+  </p>
+
+  <ul>
+    <li><strong>Month comparisons</strong> — this month is well above or below your usual by the same day.</li>
+    <li><strong>Category spikes</strong> — a category is running at 1.5× its usual or more.</li>
+    <li><strong>Category drops</strong> — a regular category is way down.</li>
+    <li><strong>New categories</strong> — first spending in a category for months.</li>
+    <li>
+      <strong>Subscription suggestions</strong> — the same charge repeating on a weekly, monthly, or yearly schedule
+      that isn't set up as recurring yet. Tap <strong>Track as recurring</strong> to set it up in one step.
+    </li>
+    <li><strong>Price changes</strong> — a regular charge went up or down, with what that means over a year.</li>
   </ul>
 
   <p>
-    From there you can tap any individual transaction to inspect or edit it. Drill, drill, drill until you find the one
-    outlier expense that warped the chart.
+    Tap an observation to see its history, what moved it, and the transactions behind it. "Usual" means the median of
+    your previous six complete months, so Flow needs a few months of history (at least three months with ten or more
+    expenses) before it says anything. Small changes are ignored, the same observation won't repeat for four weeks
+    unless it grows, and — for the current month — most observations wait until the 7th.
   </p>
-
-  <h2>Income vs. expense</h2>
 
   <p>
-    The <strong>Averages, by day</strong> section splits the period into Expense and Income cards. Transfers are excluded
-    from both by design — moving money between your own accounts isn't spending or earning.
+    Transfers, pending transactions, and matched refunds are left out. Don't care about one kind of observation? Open it
+    and choose <strong>Don't show…</strong>. Bring it back from the eye icon in the Worth knowing header.
   </p>
+
+  <GuideCallout
+    variant="info"
+    title="Worked out on your device"
+  >
+    Worth knowing runs entirely on your phone. Nothing about your transactions is sent anywhere to produce it.
+  </GuideCallout>
+
+  <h2>Insights</h2>
+
+  <p>
+    Below the range cards, the <strong>Insights</strong> tiles each cover their own time window, whatever range is
+    selected above. They're also on their own page from the <strong>Profile</strong> tab.
+  </p>
+
+  <ul>
+    <li><strong>Wrapped</strong> — your month in review: biggest expense, most frequent entry, typical purchase.</li>
+    <li><strong>Net worth</strong> — your balance over time, with a breakdown by account.</li>
+    <li><strong>Budgets</strong> — how your <a href="/guide/budgets">budgets</a> are tracking.</li>
+    <li><strong>Calendar</strong> — spending per day, including your priciest day.</li>
+    <li><strong>Recurring</strong> — upcoming recurring charges and what's already committed.</li>
+    <li><strong>Spending map</strong> — where you spent, for transactions with a location.</li>
+  </ul>
 
   <h2>Currency in reports</h2>
 
   <p>
-    Reports are always rendered in your <strong>primary currency</strong>. Transactions in other currencies are
-    converted at the latest exchange rate Flow has cached. If you need to see raw figures in their original currencies,
-    drill down to the transaction list — individual transactions show their native currency.
+    Reports are always shown in your <strong>primary currency</strong>. Transactions in other currencies are converted
+    at the latest exchange rates Flow has cached. If a rate is missing, Flow skips those amounts and tells you. Tap
+    through to the transaction list to see individual transactions in their original currency.
   </p>
 
   <GuideCallout
     variant="info"
     title="Stale rates"
   >
-    Without internet, Flow uses the most recent rates it cached. The Stats tab shows the rate date at the bottom so you
-    know how fresh the conversion is.
+    Without internet, Flow uses the most recent rates it cached.
   </GuideCallout>
 </article>

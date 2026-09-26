@@ -23,6 +23,15 @@
 
   <p>The transaction you set this on becomes a template. Flow uses it to generate copies on the schedule you choose.</p>
 
+  <GuideCallout
+    variant="tip"
+    title="Let Flow spot them"
+  >
+    Already logging a subscription by hand? <a href="/guide/reports#worth-knowing">Worth knowing</a> on the Stats tab
+    notices charges with the same title and a steady amount repeating every week, month, or year. Tap
+    <strong>Track as recurring</strong> and the recurrence is pre-filled for you.
+  </GuideCallout>
+
   <h2>Picking a schedule</h2>
 
   <p>The setup sheet offers presets for the common cases:</p>
@@ -130,5 +139,12 @@
   <p>
     Transfers can recur too. Set up a transfer between two of your accounts, then add a recurrence to it — Flow will
     duplicate the transfer on schedule. Useful for automatic monthly savings deposits.
+  </p>
+
+  <h2>Seeing what's coming</h2>
+
+  <p>
+    The <strong>Recurring</strong> tile under Insights on the <a href="/guide/reports">Stats tab</a> lists upcoming recurring
+    charges and how much is already committed.
   </p>
 </article>
