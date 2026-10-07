@@ -39,6 +39,8 @@ This is why **Update balance** doesn't overwrite a field. The user enters what t
 
 Each account holds **one** currency. Multiple currencies = multiple accounts. Transactions are stored in their account's native currency and converted to the user's primary currency on the fly for reports.
 
+Since **v0.25.0**, foreign-currency transactions also show an approximate amount in the primary currency (e.g. "≈ R$25") under the original amount in the transaction list and on the transaction page. It's hidden when no rate is available, and can be turned off with **Profile → Preferences → Money formatting → Show approximate amount**. v0.25.0 also fixed exchange rates being fetched for the wrong currency at startup and not refreshing after changing the primary currency.
+
 ### Exclude from balance / archive
 
 - **Exclude from balance** toggle on the edit page keeps an account out of the home-screen total — useful for shared, business, or test accounts.
@@ -64,6 +66,10 @@ Rule of thumb: if it should be a slice in a spending pie chart, it's a category;
 Path: **Profile tab → Categories → +**. Form takes an icon, a category name, and a color. Save with **✓** at the top right.
 
 Practical advice: start with 8–12 broad buckets, split only when one gets uncomfortably large in reports.
+
+### Icons
+
+The **Change icon** sheet (used for categories and accounts) offers **Icon**, **Emoji/Letter**, and **Image** (pick or paste). **Icon** has a search field and two tabs: **Brands & Logos** (Simple Icons, 16.23.0 as of v0.25.0) and **Symbols** (Google Material Symbols, 4.2960.0). Brand icons are stored by slug (e.g. `paypal`) rather than by code point, because Simple Icons renumbers glyphs every release.
 
 ### Three tag types
 
@@ -188,9 +194,30 @@ Whether generated occurrences land as pending or auto-confirm is controlled by *
 - Editing a recurring template changes **future** occurrences only; past generations keep their original values, so a rent increase doesn't silently rewrite the past.
 - Stop a rule by setting its end date to today/the past, removing the recurrence from the transaction, or deleting the source transaction (past generations are kept; no new ones run).
 
+### Variable amounts
+
+Since **v0.25.0**, a rule can have a varying amount (utility bills, metered plans). Turn on **Amount varies** ("Asks for the amount each time") under the schedule in the Recurrence section.
+
+- Every generated occurrence lands as **pending** with an **estimate**, regardless of the **Require confirmation** setting. Estimates are shown with a "~" prefix (e.g. "~$42").
+- Tapping **Confirm** opens the amount sheet pre-filled with the estimate; the entered amount is what gets recorded. Dismissing the sheet leaves the transaction pending.
+- The estimate is the latest confirmed amount for that rule, falling back to the template transaction's amount.
+- For a recurring transfer, the amount entered is the outgoing side; the incoming side follows the transfer's conversion rate.
+- The **Recurring** insights tile and page mark totals that include an estimate with "~".
+- Price-change observations are not raised for a rule tracked as variable.
+
 ### Recurring transfers
 
 Transfers can recur too — useful for automatic monthly savings deposits.
+
+### Fixes in v0.25.0
+
+- Saving with the default recurrence now sets the rule up (it used to be skipped).
+- Changing the start date no longer makes the rule repeat on the wrong day.
+- The start date can be earlier than the transaction date; the transaction date moves with it.
+
+### Spotting subscriptions
+
+Since **v0.25.0**, the Stats tab's **Worth knowing** card suggests charges that look recurring (same title, weekly / monthly / yearly schedule) but aren't set up yet — steady amounts, and also bills that vary. **Track as recurring** opens the latest matching transaction with the recurrence pre-filled (and **Amount varies** switched on for a varying bill). The **Recurring** insights tile lists upcoming recurring charges and the committed outflow.
 
 ---
 
@@ -203,14 +230,15 @@ A pending transaction is a real transaction record that's been created but isn't
 - All pending transactions are gathered into a single **Pending** group at the top of the feed, regardless of date — they are *not* sub-grouped by today / tomorrow / next week.
 - Pending transactions explicitly approved ahead of time show a **Pre-approved** label inside the list tile and auto-confirm when their date arrives.
 
-### Two situations that create pending
+### Three situations that create pending
 
 1. A recurring rule generates a future-dated occurrence and **Require confirmation** is on.
-2. The user sets a future date when creating or editing a transaction. Flow auto-toggles Pending on so it can't silently inflate today's balance.
+2. A recurring rule with **Amount varies** generates an occurrence (v0.25.0). These are always pending, whatever the setting, because the amount is an estimate.
+3. The user sets a future date when creating or editing a transaction. Flow auto-toggles Pending on so it can't silently inflate today's balance.
 
 ### Approving
 
-When a pending transaction is in the past or close to due, a **Confirm** button appears under its list tile. Tap it to promote the transaction to a regular one — it then affects balances immediately. Pending list tiles also support the standard swipe gestures (duplicate, delete).
+When a pending transaction is in the past or close to due, a **Confirm** button appears under its list tile. Tap it to promote the transaction to a regular one — it then affects balances immediately. For a variable-amount estimate (shown with "~"), Confirm first asks for the actual amount. Pending list tiles also support the standard swipe gestures (duplicate, delete).
 
 ### Settings
 
@@ -227,34 +255,96 @@ Pending transactions don't expire and don't auto-confirm just because their date
 
 ---
 
+## Budgets
+
+Added in **v0.24.0**. A budget is a spending limit for a period, optionally scoped to categories.
+
+### Where it lives
+
+- **Profile → Budgets** lists every budget as a card (creation order), with **New budget** at the top. Tap a card for its detail page.
+- The Stats tab has a **Budgets** tile ("Set a spending budget" / "All on track" / "{count} over limit" / "{count} nearing limit"). It opens **Budget overview**: Status, Recommendations, and Your budgets. There is deliberately **no combined total** — budgets can overlap.
+
+### Fields
+
+- **Amount** — must be more than zero. Currency chip defaults to the primary currency.
+- **Budget name** — required and unique.
+- **Scope** — multi-select categories. None selected = **All spending**. There is **no account scope**.
+- **Period** — defaults to this month. **By week**, **By month**, **By year**, or **Custom range** (via **More options**).
+- **Renew automatically** — on by default; the budget rolls into the next period (a July budget becomes an August budget). Disabled for custom ranges. Off = one-off budget.
+
+### What counts
+
+- **Expenses only** — income and transfers never count; trashed transactions don't count.
+- Transactions dated inside the current period, in the scoped categories.
+- **All accounts**, including excluded-from-balance ones.
+- **Pending transactions count**, shown as a separate segment on the progress bar.
+- Foreign-currency spending is converted with cached rates; amounts without a rate are skipped with a notice.
+
+### Status and pace
+
+- **On track** < 90% of the limit, **Nearing limit** ≥ 90%, **Over budget** ≥ 100%.
+- The detail page shows spent / limit, a progress bar with a pace marker, days left (or "Period ended"), and a one-line pace insight, e.g. "At this pace, {name} will overshoot by {amount}." (projected > 105% after 20% of the period) or "{name} has plenty of room — {amount} unspent." (projected < 75% after half the period).
+
+### Renewal and past periods
+
+The saved period is only the starting point and is never rewritten; the current period is derived from it. Since v0.24.0, renewing no longer overwrites the period that just ended. **Recent periods** shows up to the last 6 periods (never before the budget was created). Past totals are recalculated from transactions, so editing an old transaction updates that period.
+
+### Alerts and widgets
+
+- An in-app card for the budget that most needs attention ("{name}: over budget" / "{name}: {percent}% used") with a **Review** button — at most once every 3 days.
+- Home-screen widgets on iOS and Android: **Budgets** (how many need attention + the worst one) and **Budget** (one chosen budget, or whichever is closest to its limit). Both offer **Hide amounts**. Tapping opens the budget.
+
+### Editing and deleting
+
+Pencil button on the detail page. **Delete budget** is at the bottom of the editor and doesn't affect transactions. No archive. Budgets are included in backups (older backups without budgets still import).
+
+---
+
 ## Stats (Reports)
 
-The **Stats** tab is Flow's report room. Everything is computed locally from transactions — no server, no delay.
+The **Stats** tab was revamped in **v0.23.0** and extended in **v0.25.0**. Everything is computed locally from transactions — no server, no delay.
 
-### What's on the screen
+### Time range
 
-- A period header with **‹ ›** arrows for stepping back / forward through periods.
-- A granularity row: **By month / More options**. The full set of modes is **By week**, **By month**, **By year**, and **Custom** (user-picked start/end dates).
-- A **headline total** for the period, with a delta vs. the previous period.
-- A **trend chart**: current period overlaid on the previous period for comparison.
-- **Averages, by day** — Expense and Income cards summarizing the period's daily mean. Transfers are excluded from both by design.
+Defaults to the current month. **‹ ›** arrows (or swipe) step through periods; tapping the month/year label opens a picker. **More options** has **Common options** (**This week**, **This month**, **This year**, **Last 30 days**, **All time**) and the modes **By week**, **By month**, **By year**, **Custom range**. The Stats tab has only a time control — it doesn't follow the home feed's filters and has no account/currency filter.
 
-### Drill-down
+### Range-bound cards (top to bottom)
 
-Tap a point on the trend chart, or one of the average cards, to see:
+- **Worth knowing** — only when a single month is selected (see below).
+- **Cash flow** — "In" / "Out".
+- **Pace** — **Projected** (end-of-range projection) when the range includes today, otherwise **Total spent**; plus **Avg / day** and the trend vs. the previous period.
+- **Top categories** — top 3 expense categories with bars in category colors. Tapping opens the ranked list.
 
-- Just the transactions that contributed.
-- A sub-breakdown by category or account.
+Transfers are excluded from income and expense.
 
-From there, tap any individual transaction to inspect or edit it.
+### Ranked list (categories)
 
-### Time only — no other filters
+Since v0.25.0, category stats open as a ranked list: its own time range selector, **Expense** / **Income** tabs, a **List** / **Chart** toggle (List default), and a summary card (total, number of categories, number of transactions). Each row shows the color, name, share % and amount, with a share bar scaled to the largest group. Tapping a row opens the category with the same range.
 
-The Stats tab has only a **time-period control**. It does not respect the home feed's active filter. Filters are home-only (see below).
+**Pie chart** (Chart view): slices use category colors; the center shows **Total** and the total, or the selected slice's name and amount. The selected slice gets a percent badge. Tapping an already-selected slice opens the category.
+
+### Worth knowing
+
+On-device observations about the selected month (v0.25.0). At most 3 are shown. Types:
+
+- **Month comparisons** — "{month} is {value} above/below your usual by the {day}." (≥ 125% or ≤ 80% of the median through the same day).
+- **Category spikes** — "{category} is {value} your usual." (≥ 1.5× median; category present in ≥ 3 baseline months; max 2).
+- **Category drops** — "{category} is down {value}." (≤ 60% of median in a near-every-month category; current month only from day 20).
+- **New categories** — "First {value} spending in {months} months."
+- **Subscription suggestions** — "{value} looks like a monthly/weekly/yearly charge." Same title, steady amount (±10%), on a schedule (≥ 3 charges; yearly ≥ 2). Bills that vary (up to roughly 35%) are suggested too, but need ≥ 4 charges; those open with **Amount varies** on. Current month only, only if not already tracked, max 1. Action: **Track as recurring** opens the latest matching transaction with the recurrence pre-filled.
+- **Price changes** — "{title} went from {previous} to {value}." plus "{amount} more/less a year".
+
+Rules: the baseline is the median of the previous 6 complete months, and at least 3 of them need ≥ 10 expenses or nothing is shown. For the current month, nothing is flagged before the 7th (except subscription suggestions and price changes). An observation must be material (≥ 5% of a usual month or 3× the median expense, whichever is larger). The same observation isn't repeated for 28 days unless it grows 1.5×. Transfers, pending entries and matched refunds are left out. Empty state: "Nothing unusual in {month} so far."
+
+Tapping an observation opens a detail sheet (history chart, "What moved it" / "Biggest entries", "See these transactions"). Each type can be hidden ("Don't show category spikes", etc.) and brought back from the eye icon in the Worth knowing header.
+
+### Insights tiles
+
+Below the range cards, an **Insights** header introduces tiles that use their own time windows regardless of the selected range: **Wrapped** ("Your {month}, wrapped" — month in review), **Net worth** (over time, by account), **Budgets**, **Calendar** (spending per day, priciest day), **Recurring** (upcoming recurring charges, committed outflow), and **Spending map**. The same tiles are on a separate **Insights** page reached from the top of the Profile tab.
 
 ### Currency in reports
 
-Reports are always rendered in the user's primary currency, converted at the latest cached exchange rate. The Stats tab shows the rate date at the bottom. Without internet, Flow uses the most recent rates it cached. Drilling down to the transaction list shows individual transactions in their native currency.
+Reports are always rendered in the primary currency, converted at the latest cached exchange rates. Amounts without a rate are skipped with a notice ("Some non-primary currency amounts were skipped (missing exchange rates)."). Without internet, Flow uses the most recent rates it cached. Drilling down to the transaction list shows individual transactions in their native currency.
 
 ---
 
@@ -358,11 +448,11 @@ The same full-backup ZIP from the Backup screen — every transaction, account, 
 ### Setup
 
 1. Make sure iCloud Drive is on (Settings → your name → iCloud), and that **Flow** is enabled in the apps list.
-2. Open **Profile → Preferences → Sync**. Three controls:
+2. Open **Profile → Preferences → Sync & backup** (Data section). Three controls:
    - **Backup interval** — chips: *Disable, 12 hours, a day, 2 days, 3 days, 7 days, 14 days, 30 days*. Backups are created automatically on app open if the interval has elapsed.
    - **Sync to iCloud** — toggle that pushes backups up to iCloud Drive.
    - **Number of backups to keep** — chips: *3, 5, 10, 20, 30, 100, Infinite*. Older backups beyond that count are deleted at startup.
-3. Verify: Files app → iCloud Drive → Flow shows timestamped ZIPs. The Sync page also shows the last successful sync time.
+3. Verify: Files app → iCloud Drive → Flow shows timestamped ZIPs. The Sync & backup page also shows the last successful sync time.
 
 ### Restoring from iCloud
 
@@ -456,60 +546,61 @@ Scroll to the bottom of **Profile → Preferences → Eny** and tap the red **Di
 
 The Profile tab is Flow's "everything else" hub. Top to bottom:
 
-- A **profile card** (avatar + display name).
-- **Accounts**, **Categories**, **Tags**, **Pending transactions** — direct entries to those manager screens.
-- **Community** section: Support Flow, Contributors, Recommend Flow (system share sheet), Visit GitHub repo. (No "Buy me a coffee" link — disallowed by Apple's policy. Sponsorship goes through GitHub.)
+- An **Insights** entry (the Stats tab's insight tiles on their own page).
+- **Accounts**, **Categories**, **Budgets**, **Tags**, **Pending transactions** — direct entries to those manager screens.
+- **Community** section: Support Flow, Contributors, Recommend Flow (system share sheet), Visit GitHub repo.
 - **Other** section: **Recently Deleted** (the trash bin's contents), **Backup**, **Import**, **Preferences**.
 - Footer: app version (`v…`) and a "with love from the creator" link to the maintainer's GitHub.
 
 ## Preferences
 
-Path: **Profile → Preferences**. The page is grouped into sections:
+Path: **Profile → Preferences**. Reorganized in **v0.25.0** into these sections:
 
-**Top-level controls:**
+**General:**
 
-- **Sync** — iCloud auto-backup configuration.
-- **Reminders** — daily reminder to track expenses (only shown when the platform supports scheduled notifications). Toggle: **Remind daily** + a **Remind me at** time picker. The page warns: *"Reminders will stop if you don't open Flow for 7 consecutive days."*
-- **Language** — locale selection.
+- **Language** — locale selection (on iOS, opens the system app settings).
 - **Primary currency** — what reports convert to. Also asked during onboarding.
-- **Transfer** — controls how transfers behave. **Layout** chooses between **Combine** (one row in the list) and **Separate** (two rows — one debit, one credit). The combined view warns *"Transfers will always be separated in some places"*. **Exclude from totals** decides whether transfers count toward total expense / income.
-- **Trash bin** — retention period and trash management.
-- **Money formatting** — three controls: **Prefer full amounts** (don't abbreviate large numbers), **Use currency symbol** (e.g. "$5" vs "5 USD"), and **Select a custom format** (an ICU pattern picker, with **Default** as the option for "let the locale decide").
-
-**Integrations:**
-
-- **Eny** — receipt-scanner integration.
+- **Money formatting** — **Prefer full amounts** (don't abbreviate large numbers), **Use currency symbol** (e.g. "$5" vs "5 USD"), **Show approximate amount** ("Also show foreign amounts in your primary currency"; on by default, v0.25.0), **Hide zero decimals** (e.g. "3" instead of "3.00"; v0.25.0), and **Select a custom format** (an ICU pattern picker, with **Default** as "let the locale decide").
+- **Date format** (v0.25.0) — **Language default**, `YYYY-MM-DD`, `DD/MM/YYYY`, `MM/DD/YYYY`, `DD.MM.YYYY`, or `D MMM YYYY`, with a live preview. Plus **Show exact dates in list headers** (off by default): day headers show e.g. "Sep 26, 2026" instead of "Today" / "Yesterday". Tapping a header still flips between the two.
+- **Reminder** — daily reminder to track expenses (only where scheduled notifications are supported). **Remind daily** + a time picker. Reminders stop if Flow isn't opened for 7 consecutive days.
+- **Sound/haptic feedback upon click** — switch.
 
 **Transactions:**
 
-- **Pending transactions** — Require confirmation, Update date upon confirmation, etc.
-- **Transaction location** (geo) — two distinct features sharing the same permission. **Enable** turns on location-tag proximity suggestions (see Categories and tags). **Auto-attach** additionally stamps every new transaction with the user's current GPS automatically. With auto-attach off, the user can still manually pick a location on a map.
-- **Transaction list tile** — how individual transaction rows render in the list. Controls include **Less dense layout** (relaxed density), **Leading icon** chooser (Account or Category), **Show category for untitled transactions** (fall back to the category name as the row title), **Show category after the account**, and **Show external sources (e.g., Eny)**. There's a live **Preview** at the top.
-- **Transaction Entry Flow** — add, remove, and reorder the steps shown when creating a transaction.
+- **Transaction Entry** — add, remove, and reorder the steps shown when creating a transaction.
+- **Transfers** — **Layout**: **Combine** (one row) or **Separate** (two rows); **Exclude from totals** decides whether transfers count toward total expense / income.
+- **Pending transactions** — **Require confirmation**, **Update date on confirm**, **Show on home**, **Notify**, **Early reminder**.
+- **Transaction location** — **Enable** turns on location-tag proximity suggestions; **Auto-attach** stamps every new transaction with the current GPS. Without auto-attach you can still pick a location on a map; since v0.23.2 the map sheet has a **Use current location** button (iOS / Android).
+- **List item appearance** — **Leading icon** (Account or Category), **Show category after the account**, **Show category for untitled transactions**, **Less dense layout**, **Show external sources (e.g., Eny)**, with a live preview.
 
 **Appearance:**
 
-- **Theme** — large library of color schemes organized into groups. The main groups are **Flow Light**, **Flow Dark**, and **Flow OLED** (each with ~16 named accents like `electricLavender`, `pinkQuartz`, `cottonCandy`, `simplyDelicious`, `seafairGreen`…), plus **Catppuccin** (Frappé / Macchiato / Mocha, ~14 each), and the standalone themes **Palenight** and **Monochrome**. Initially the app follows the system light/dark setting with the default purple theme; once the user picks a theme, the app stops auto-switching. Each Flow scheme has a matching iOS app icon name, and a separate "theme changes app icon" toggle controls whether picking a theme also swaps the icon (iOS only).
-- **Numpad** — `preferences.numpad.layout` chooses between **Classic** and **Modern** layouts (modern is the phone-style numpad).
-- **Transaction button order** ("Button placement") — drag-and-drop reorder of the bottom action buttons. The same order is reflected in the transaction-buttons home-screen widget.
-- **Change visuals** ("Change") — controls how income / expense growth is rendered. Two sections: **Income growth** and **Expense growth**, each with an arrow-direction and a color picker; tap the arrow / color swatch to change. (Useful when the default red-up / green-down convention feels backwards.)
+- **Theme** — **Dynamic theme**, **Use OLED theme**, **Other themes**, **App icon follows theme** (iOS). Theme groups are **Flow Light**, **Flow Dark**, and **Flow OLED** (each with ~16 named accents), **Catppuccin** (Frappé / Macchiato / Mocha), plus **Palenight** and **Monochrome**. Initially the app follows the system light/dark setting.
+- **Numpad** — **Classic** or **Modern** (phone-style) layout.
+- **Button placement** — drag-and-drop reorder of the new-transaction buttons (also used by the transaction-buttons widget).
+- **Trend indicators** (formerly "Change") — arrow direction and color for **Income growth** and **Expense growth**.
 
-**Privacy:**
+**Privacy & security:**
 
-- A privacy section, plus a **Lock App** section that only appears when the device has biometrics or a passcode available. Lock App uses `LocalAuthService` (Face ID / Touch ID / device passcode).
+- **Mask numbers (\*) at startup** and **Mask numbers (\*) when shaking the device**. (v0.25.0 fixed the startup option not taking effect.)
+- **Lock app** and **Lock after closing** — only when the device has biometrics or a passcode (Face ID / Touch ID / passcode).
 
-**Haptics:**
+**Data:**
 
-- Haptic feedback toggles.
+- **Sync & backup** — iCloud auto-backup: **Backup interval**, **Sync to iCloud**, **Number of backups to keep** (see the iCloud section).
+- **Eny** — receipt-scanner integration.
+- **Trash bin** — **Retention period**, **View items**, **Empty trash bin**.
+- **Delete unused files** — cleans up orphaned attachments.
 
-**Feedback / dev:**
+**Problems and feedback:**
 
-- Clean up hanging files (orphaned attachments).
-- Debug logs.
+- **View debug logs**.
+
+What moved in v0.25.0: Sync and Reminder no longer sit headerless at the top (Sync → Data as "Sync & backup", Reminder → General); Transfers → Transactions; Trash bin and Eny → Data (the "Integrations" header is gone); the haptics switch → General; "Change" → "Trend indicators"; "Privacy" → "Privacy & security"; "Delete unused files" → Data.
 
 ## Trash bin (Recently Deleted)
 
-Two entry points: **Profile → Recently Deleted** for the items themselves, and **Profile → Preferences → Trash bin** for retention configuration plus See items / Empty bin actions.
+Two entry points: **Profile → Recently Deleted** for the items themselves, and **Profile → Preferences → Trash bin** (Data section) for retention configuration plus View items / Empty trash bin actions.
 
 Retention is configurable via presets: **7 days, 14 days, 30 days, 90 days, 180 days, 365 days**, or **Forever**. Items past the retention period are purged automatically; "Empty bin" purges everything immediately.
 
@@ -517,7 +608,7 @@ The trash holds **transactions, transaction tags, and recurring transactions**. 
 
 ## App lock
 
-Path: **Profile → Preferences → Lock App** (the section is hidden if the device has neither biometrics nor a passcode set). Uses Face ID / Touch ID / passcode via the OS's local-auth service.
+Path: **Profile → Preferences → Privacy & security → Lock app** (hidden if the device has neither biometrics nor a passcode set). Uses Face ID / Touch ID / passcode via the OS's local-auth service.
 
 ## Languages
 
@@ -537,6 +628,8 @@ Flow ships these locales:
 - Ukrainian — Українська (Україна)
 - Arabic — العربية *(RTL)*
 - Persian — فارسی (ایران) *(RTL)*
+- Chinese (Simplified) — 简体中文
+- Chinese (Traditional, Taiwan) — 正體中文 (台灣) *(added in v0.23.0)*
 
 On iOS, language selection opens the system app settings (per-app language is set by iOS itself).
 
@@ -546,6 +639,10 @@ Flow ships home-screen widgets on iOS and Android for:
 
 - Quickly creating a transaction.
 - Monthly expense / income summary.
+- **Budgets** (v0.24.0) — how many budgets need attention, and the one that needs it most.
+- **Budget** (v0.24.0) — one chosen budget, or whichever is closest to its limit.
+
+Budget widgets have a **Hide amounts** option (progress and status only).
 
 There is no Apple Watch app, Wear OS app, or iOS Live Activities support.
 
@@ -596,13 +693,10 @@ The home feed, the transaction list inside an account, the transaction list insi
 
 Path: **Profile → Support Flow** (community section). It's an in-app page (`/support`) that lists ways to support the project:
 
-- **Leave a review** — opens the App Store / Play Store in-app review prompt (iOS / iPadOS / macOS / Android).
+- **Leave a review** — opens the App Store / Play Store in-app review prompt.
 - **Star on GitHub** — links to the repo.
-- **Tip the creator** ("Buy creator a coffee") — third-party donation. The page is explicit that tipping does **not** unlock features; all functionality is free for everyone.
+- **Tip the creator** — on **iOS**, three in-app purchase tips (small / medium / large, shown at local App Store prices; added in v0.23.2). On Android and other platforms it's a **Buy creator a coffee** link to Ko-fi instead; macOS shows neither. The card is explicit that tipping does **not** unlock features — all functionality is free for everyone.
 - **Contribute code** — for developers who want to get involved.
-- **Give us ideas** — links to the issue tracker for feature requests / feedback.
-
-This page is the home of the donation link; the Profile tab itself doesn't carry a "Buy me a coffee" entry, per Apple's policy on in-app monetization links.
 
 ## Onboarding
 
@@ -630,6 +724,6 @@ When the user picks a file to import on top of an existing dataset, Flow shows a
 ## Technical bits
 
 - iOS bundle ID: `mn.flow.flow`.
-- Cross-platform: iPhone, iPad, Mac (via Catalyst / native), Android.
+- Cross-platform: iPhone, iPad, Mac (via Catalyst / native), Android. Since **v0.25.0**, iOS 15 or later is required.
 - Offline-first by design.
 - Account-type localized labels in `assets/l10n/en.json`.

@@ -80,11 +80,22 @@ export const load: LayoutLoad = () => {
       ],
     },
     {
+      title: "Planning",
+      articles: [
+        {
+          title: "Budgets",
+          description: "Set spending limits by week, month, or year, and see how you're pacing.",
+          href: "/guide/budgets",
+          emoji: "🎯",
+        },
+      ],
+    },
+    {
       title: "Insights",
       articles: [
         {
           title: "Reports & stats",
-          description: "Understand where your money goes with charts and breakdowns.",
+          description: "Cash flow, top categories, and on-device observations about what changed.",
           href: "/guide/reports",
           emoji: "📊",
         },

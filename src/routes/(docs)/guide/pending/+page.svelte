@@ -34,12 +34,16 @@
     </li>
   </ul>
 
-  <p>Two situations create pending transactions:</p>
+  <p>Three situations create pending transactions:</p>
 
   <ul>
     <li>
       A <a href="/guide/recurring">recurring rule</a> generates a future-dated occurrence and you have
       <strong>Require confirmation</strong> turned on.
+    </li>
+    <li>
+      A recurring rule with <a href="/guide/recurring">Amount varies</a> generates an occurrence. These are always pending,
+      because the amount is only an estimate until you confirm it.
     </li>
     <li>
       You set a future date when creating or editing a transaction. Flow auto-toggles its Pending flag on so it can't
@@ -53,6 +57,11 @@
   <p>
     When a pending transaction is in the past or close to due, a <strong>Confirm</strong> button appears under its list tile.
     Tap it to promote the transaction to a regular one — it'll start affecting balances immediately.
+  </p>
+
+  <p>
+    If the amount is an estimate (shown with a "~"), Confirm asks for the actual amount first. Closing that sheet
+    without entering one leaves the transaction pending.
   </p>
 
   <p>

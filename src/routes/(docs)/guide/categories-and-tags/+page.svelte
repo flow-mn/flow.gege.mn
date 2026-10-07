@@ -48,6 +48,13 @@
     <li>Tap the <strong>✓</strong> at the top right to save.</li>
   </ol>
 
+  <p>
+    <strong>Change icon</strong> offers three kinds of icon: <strong>Icon</strong> (searchable
+    <strong>Symbols</strong> from Google's Material Symbols, plus <strong>Brands &amp; Logos</strong> for banks, shops,
+    and services), <strong>Emoji/Letter</strong>, and <strong>Image</strong> (pick or paste your own). The same picker is
+    used for accounts.
+  </p>
+
   <AnnotatedScreenshot
     src="/guide/categories/create.png"
     alt="Creating a new category, with name, icon, and color fields visible."

@@ -23,6 +23,15 @@
 
   <p>The transaction you set this on becomes a template. Flow uses it to generate copies on the schedule you choose.</p>
 
+  <GuideCallout
+    variant="tip"
+    title="Let Flow spot them"
+  >
+    Already logging a subscription by hand? <a href="/guide/reports#worth-knowing">Worth knowing</a> on the Stats tab
+    notices charges with the same title repeating every week, month, or year — including bills whose amount moves
+    around. Tap <strong>Track as recurring</strong> and the recurrence is pre-filled for you.
+  </GuideCallout>
+
   <h2>Picking a schedule</h2>
 
   <p>The setup sheet offers presets for the common cases:</p>
@@ -108,6 +117,32 @@
     plus one fresh look-ahead in the future. Your history stays correct without flooding you with future-dated rows.
   </GuideCallout>
 
+  <h2>Bills that vary <span class="text-primary text-xs font-semibold opacity-80">New in v0.25.0</span></h2>
+
+  <p>
+    Electricity, water, a phone plan with overages — some bills arrive on schedule but never for the same amount. For
+    those, turn on <strong>Amount varies</strong> right under the schedule in the Recurrence section.
+  </p>
+
+  <ul>
+    <li>
+      Every occurrence lands as a <a href="/guide/pending">pending transaction</a> with an <em>estimate</em>, shown with
+      a "~" (like <em>~$42</em>). This happens even if <strong>Require confirmation</strong> is off.
+    </li>
+    <li>
+      When the bill arrives, tap <strong>Confirm</strong>. Flow asks for the actual amount first, then records it.
+    </li>
+    <li>
+      The estimate is the last amount you confirmed for that rule. Until there is one, it's the amount on the original
+      transaction.
+    </li>
+  </ul>
+
+  <p>
+    Recurring transfers can vary too. You enter the amount leaving the source account, and the other side follows the
+    transfer's conversion rate.
+  </p>
+
   <h2>Editing the rule</h2>
 
   <p>
@@ -130,5 +165,12 @@
   <p>
     Transfers can recur too. Set up a transfer between two of your accounts, then add a recurrence to it — Flow will
     duplicate the transfer on schedule. Useful for automatic monthly savings deposits.
+  </p>
+
+  <h2>Seeing what's coming</h2>
+
+  <p>
+    The <strong>Recurring</strong> tile under Insights on the <a href="/guide/reports">Stats tab</a> lists upcoming recurring
+    charges and how much is already committed. Totals that include an estimate for a varying bill are marked with a "~".
   </p>
 </article>

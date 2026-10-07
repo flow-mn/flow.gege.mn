@@ -119,6 +119,13 @@
     for reports.
   </p>
 
+  <p>
+    Transactions in a foreign currency also show an approximate amount in your primary currency under the original, like
+    <em>≈ R$25</em>. Don't want it? Turn off <strong>Show approximate amount</strong> in
+    <strong>Profile → Preferences → Money formatting</strong>. The same screen has <strong>Hide zero decimals</strong>,
+    which shows <em>$3</em> instead of <em>$3.00</em>.
+  </p>
+
   <GuideCallout
     variant="info"
     title="Exchange rates"

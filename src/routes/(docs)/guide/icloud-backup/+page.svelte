@@ -41,7 +41,9 @@
 
   <h2>2. Enable iCloud sync in Flow</h2>
 
-  <p>Open <strong>Profile</strong> → <strong>Preferences</strong> → <strong>Sync</strong>. Three controls:</p>
+  <p>
+    Open <strong>Profile</strong> → <strong>Preferences</strong> → <strong>Sync &amp; backup</strong>. Three controls:
+  </p>
 
   <ol>
     <li>
