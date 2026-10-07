@@ -8,9 +8,12 @@
 
   let { sections } = $derived(data);
 
-  const selectedArticle = $derived(
-    sections?.flatMap((section) => section.articles)?.find((article) => article.href === page.url.pathname)
-  );
+  const articles = $derived(sections?.flatMap((section) => section.articles) ?? []);
+
+  const selectedIndex = $derived(articles.findIndex((article) => article.href === page.url.pathname));
+  const selectedArticle = $derived(articles[selectedIndex]);
+  const previousArticle = $derived(selectedIndex > 0 ? articles[selectedIndex - 1] : undefined);
+  const nextArticle = $derived(selectedIndex >= 0 ? articles[selectedIndex + 1] : undefined);
 
   const onIndexPage = $derived(page.url.pathname === "/guide");
 </script>
@@ -88,5 +91,31 @@
       <div class="h-2"></div>
     {/if}
     {@render children()}
+
+    {#if previousArticle || nextArticle}
+      <nav
+        aria-label="Guide pagination"
+        class="mt-16 grid grid-cols-1 gap-3 border-t border-white/10 pt-6 sm:grid-cols-2"
+      >
+        {#if previousArticle}
+          <a
+            href={previousArticle.href}
+            class="border-white/8 hover:border-primary/30 hover:bg-primary/5 bg-white/3 flex flex-col gap-1 rounded-xl border px-5 py-4 transition-colors"
+          >
+            <span class="text-text text-xs opacity-50">← Previous</span>
+            <span class="text-sm font-semibold">{previousArticle.title}</span>
+          </a>
+        {/if}
+        {#if nextArticle}
+          <a
+            href={nextArticle.href}
+            class="border-white/8 hover:border-primary/30 hover:bg-primary/5 bg-white/3 flex flex-col gap-1 rounded-xl border px-5 py-4 text-right transition-colors sm:col-start-2"
+          >
+            <span class="text-text text-xs opacity-50">Next →</span>
+            <span class="text-sm font-semibold">{nextArticle.title}</span>
+          </a>
+        {/if}
+      </nav>
+    {/if}
   </div>
 </div>

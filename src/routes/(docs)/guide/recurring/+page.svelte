@@ -59,18 +59,18 @@
   >
     {#snippet overlay()}
       <Marker
-        x={50}
-        y={75}
+        x={42}
+        y={71.5}
         n={1}
       />
       <Marker
-        x={50}
-        y={82}
+        x={42}
+        y={78}
         n={2}
       />
       <Marker
-        x={50}
-        y={89}
+        x={42}
+        y={84.5}
         n={3}
       />
     {/snippet}

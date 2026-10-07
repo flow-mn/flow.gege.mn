@@ -100,6 +100,10 @@ layer(base);
     list-style-position: inside;
   }
 
+  .prose li {
+    list-style-position: outside;
+  }
+
   @media (max-width: 768px) {
     .hide-mobile {
       display: none;

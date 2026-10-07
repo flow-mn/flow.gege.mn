@@ -100,17 +100,19 @@
     </p>
   </div>
 
-  <div class="trig-target grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    {#each [{ href: "/guide/getting-started", emoji: "🚀", title: "Getting started", desc: "Install Flow, set up your first account, and log a transaction." }, { href: "/guide/recurring", emoji: "🔁", title: "Recurring transactions", desc: "Make subscriptions, salaries, and bills repeat on a schedule." }, { href: "/guide/backup", emoji: "💾", title: "Backup & restore", desc: "Move every account, transaction, and attachment to a new device." }, { href: "/guide/changelog", emoji: "🆕", title: "What's new", desc: "Release notes for every Flow version, straight from GitHub." }] as card (card.href)}
-      <a
-        href={card.href}
-        class="border-white/8 hover:border-primary/30 hover:bg-primary/5 bg-white/3 group flex flex-col gap-2 rounded-xl border p-5 transition-colors"
-      >
-        <span class="text-2xl">{card.emoji}</span>
-        <div class="font-semibold">{card.title}</div>
-        <div class="text-sm leading-relaxed opacity-60">{card.desc}</div>
-      </a>
-    {/each}
+  <div class="trig-target w-full max-w-5xl">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {#each [{ href: "/guide/getting-started", emoji: "🚀", title: "Getting started", desc: "Install Flow, set up your first account, and log a transaction." }, { href: "/guide/recurring", emoji: "🔁", title: "Recurring transactions", desc: "Make subscriptions, salaries, and bills repeat on a schedule." }, { href: "/guide/backup", emoji: "💾", title: "Backup & restore", desc: "Move every account, transaction, and attachment to a new device." }, { href: "/guide/changelog", emoji: "🆕", title: "What's new", desc: "Release notes for every Flow version, straight from GitHub." }] as card (card.href)}
+        <a
+          href={card.href}
+          class="border-white/8 hover:border-primary/30 hover:bg-primary/5 bg-white/3 group flex flex-col gap-2 rounded-xl border p-5 transition-colors"
+        >
+          <span class="text-2xl">{card.emoji}</span>
+          <div class="font-semibold">{card.title}</div>
+          <div class="text-sm leading-relaxed opacity-60">{card.desc}</div>
+        </a>
+      {/each}
+    </div>
   </div>
 
   <a

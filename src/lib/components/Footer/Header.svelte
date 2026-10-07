@@ -8,4 +8,4 @@
   let { children }: $Props = $props();
 </script>
 
-<li class="mb-2 opacity-60">{@render children()}</li>
+<li class="mb-1 opacity-60">{@render children()}</li>

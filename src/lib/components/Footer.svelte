@@ -32,7 +32,7 @@
           data-aos="fade-right"
           data-aos-delay="100"
         >
-          <ul>
+          <ul class="flex flex-col gap-2 text-sm">
             <Header>Community</Header>
             <li>
               <a
@@ -53,7 +53,7 @@
           data-aos="fade-right"
           data-aos-delay="150"
         >
-          <ul>
+          <ul class="flex flex-col gap-2 text-sm">
             <Header>Support</Header>
             <li>
               <a href="/faq">FAQ</a>
@@ -77,7 +77,7 @@
           data-aos="fade-right"
           data-aos-delay="200"
         >
-          <ul>
+          <ul class="flex flex-col gap-2 text-sm">
             <Header>Contribute</Header>
             <li>
               <a

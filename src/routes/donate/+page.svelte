@@ -39,9 +39,7 @@
       <iframe
         src="https://github.com/sponsors/flow-mn/card"
         title={m["donate.github.iframe_title"]()}
-        height="120"
-        width="600"
-        style="border: 0; max-width: 100%;"
+        class="h-44 w-full max-w-[600px] rounded-lg border-0 sm:h-[120px]"
       ></iframe>
     </div>
 

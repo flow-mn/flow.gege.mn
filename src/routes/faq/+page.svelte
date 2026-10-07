@@ -10,19 +10,18 @@
 </svelte:head>
 
 {#snippet beggingEntry()}
-  <ul class="list-inside list-disc opacity-70">
+  <ul class="mt-2 list-disc pl-5 opacity-70 [&>li]:list-outside">
     <li>
-      <a href="https://buymeacoffee.com/sadespresso">{m["faq.begging.bmac"]()}</a>
+      <a
+        href="https://buymeacoffee.com/sadespresso"
+        target="_blank">{m["faq.begging.bmac"]()}</a
+      >
     </li>
     <li>
-      {m["faq.begging.github"]()}
-      <iframe
-        src="https://github.com/sponsors/flow-mn/button"
-        title="Sponsor flow-mn"
-        height="32"
-        width="114"
-        style="border: 0; border-radius: 6px;"
-      ></iframe>
+      <a
+        href="https://github.com/sponsors/flow-mn"
+        target="_blank">{m["faq.begging.github"]()}</a
+      >
     </li>
     <li>
       {m["faq.begging.golomt"]()}<br />
