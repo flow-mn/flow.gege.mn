@@ -194,13 +194,30 @@ Whether generated occurrences land as pending or auto-confirm is controlled by *
 - Editing a recurring template changes **future** occurrences only; past generations keep their original values, so a rent increase doesn't silently rewrite the past.
 - Stop a rule by setting its end date to today/the past, removing the recurrence from the transaction, or deleting the source transaction (past generations are kept; no new ones run).
 
+### Variable amounts
+
+Since **v0.25.0**, a rule can have a varying amount (utility bills, metered plans). Turn on **Amount varies** ("Asks for the amount each time") under the schedule in the Recurrence section.
+
+- Every generated occurrence lands as **pending** with an **estimate**, regardless of the **Require confirmation** setting. Estimates are shown with a "~" prefix (e.g. "~$42").
+- Tapping **Confirm** opens the amount sheet pre-filled with the estimate; the entered amount is what gets recorded. Dismissing the sheet leaves the transaction pending.
+- The estimate is the latest confirmed amount for that rule, falling back to the template transaction's amount.
+- For a recurring transfer, the amount entered is the outgoing side; the incoming side follows the transfer's conversion rate.
+- The **Recurring** insights tile and page mark totals that include an estimate with "~".
+- Price-change observations are not raised for a rule tracked as variable.
+
 ### Recurring transfers
 
 Transfers can recur too — useful for automatic monthly savings deposits.
 
+### Fixes in v0.25.0
+
+- Saving with the default recurrence now sets the rule up (it used to be skipped).
+- Changing the start date no longer makes the rule repeat on the wrong day.
+- The start date can be earlier than the transaction date; the transaction date moves with it.
+
 ### Spotting subscriptions
 
-Since **v0.25.0**, the Stats tab's **Worth knowing** card suggests charges that look recurring (same title, steady amount, weekly / monthly / yearly schedule) but aren't set up yet. **Track as recurring** opens the latest matching transaction with the recurrence pre-filled. The **Recurring** insights tile lists upcoming recurring charges and the committed outflow.
+Since **v0.25.0**, the Stats tab's **Worth knowing** card suggests charges that look recurring (same title, weekly / monthly / yearly schedule) but aren't set up yet — steady amounts, and also bills that vary. **Track as recurring** opens the latest matching transaction with the recurrence pre-filled (and **Amount varies** switched on for a varying bill). The **Recurring** insights tile lists upcoming recurring charges and the committed outflow.
 
 ---
 
@@ -213,14 +230,15 @@ A pending transaction is a real transaction record that's been created but isn't
 - All pending transactions are gathered into a single **Pending** group at the top of the feed, regardless of date — they are *not* sub-grouped by today / tomorrow / next week.
 - Pending transactions explicitly approved ahead of time show a **Pre-approved** label inside the list tile and auto-confirm when their date arrives.
 
-### Two situations that create pending
+### Three situations that create pending
 
 1. A recurring rule generates a future-dated occurrence and **Require confirmation** is on.
-2. The user sets a future date when creating or editing a transaction. Flow auto-toggles Pending on so it can't silently inflate today's balance.
+2. A recurring rule with **Amount varies** generates an occurrence (v0.25.0). These are always pending, whatever the setting, because the amount is an estimate.
+3. The user sets a future date when creating or editing a transaction. Flow auto-toggles Pending on so it can't silently inflate today's balance.
 
 ### Approving
 
-When a pending transaction is in the past or close to due, a **Confirm** button appears under its list tile. Tap it to promote the transaction to a regular one — it then affects balances immediately. Pending list tiles also support the standard swipe gestures (duplicate, delete).
+When a pending transaction is in the past or close to due, a **Confirm** button appears under its list tile. Tap it to promote the transaction to a regular one — it then affects balances immediately. For a variable-amount estimate (shown with "~"), Confirm first asks for the actual amount. Pending list tiles also support the standard swipe gestures (duplicate, delete).
 
 ### Settings
 
@@ -313,7 +331,7 @@ On-device observations about the selected month (v0.25.0). At most 3 are shown. 
 - **Category spikes** — "{category} is {value} your usual." (≥ 1.5× median; category present in ≥ 3 baseline months; max 2).
 - **Category drops** — "{category} is down {value}." (≤ 60% of median in a near-every-month category; current month only from day 20).
 - **New categories** — "First {value} spending in {months} months."
-- **Subscription suggestions** — "{value} looks like a monthly/weekly/yearly charge." Same title, steady amount (±10%), on a schedule (≥ 3 charges; yearly ≥ 2). Current month only, only if not already tracked, max 1. Action: **Track as recurring** opens the latest matching transaction with the recurrence pre-filled.
+- **Subscription suggestions** — "{value} looks like a monthly/weekly/yearly charge." Same title, steady amount (±10%), on a schedule (≥ 3 charges; yearly ≥ 2). Bills that vary (up to roughly 35%) are suggested too, but need ≥ 4 charges; those open with **Amount varies** on. Current month only, only if not already tracked, max 1. Action: **Track as recurring** opens the latest matching transaction with the recurrence pre-filled.
 - **Price changes** — "{title} went from {previous} to {value}." plus "{amount} more/less a year".
 
 Rules: the baseline is the median of the previous 6 complete months, and at least 3 of them need ≥ 10 expenses or nothing is shown. For the current month, nothing is flagged before the 7th (except subscription suggestions and price changes). An observation must be material (≥ 5% of a usual month or 3× the median expense, whichever is larger). The same observation isn't repeated for 28 days unless it grows 1.5×. Transfers, pending entries and matched refunds are left out. Empty state: "Nothing unusual in {month} so far."
@@ -542,7 +560,7 @@ Path: **Profile → Preferences**. Reorganized in **v0.25.0** into these section
 
 - **Language** — locale selection (on iOS, opens the system app settings).
 - **Primary currency** — what reports convert to. Also asked during onboarding.
-- **Money formatting** — **Prefer full amounts** (don't abbreviate large numbers), **Use currency symbol** (e.g. "$5" vs "5 USD"), **Show approximate amount** ("Also show foreign amounts in your primary currency"; on by default, v0.25.0), and **Select a custom format** (an ICU pattern picker, with **Default** as "let the locale decide").
+- **Money formatting** — **Prefer full amounts** (don't abbreviate large numbers), **Use currency symbol** (e.g. "$5" vs "5 USD"), **Show approximate amount** ("Also show foreign amounts in your primary currency"; on by default, v0.25.0), **Hide zero decimals** (e.g. "3" instead of "3.00"; v0.25.0), and **Select a custom format** (an ICU pattern picker, with **Default** as "let the locale decide").
 - **Date format** (v0.25.0) — **Language default**, `YYYY-MM-DD`, `DD/MM/YYYY`, `MM/DD/YYYY`, `DD.MM.YYYY`, or `D MMM YYYY`, with a live preview. Plus **Show exact dates in list headers** (off by default): day headers show e.g. "Sep 26, 2026" instead of "Today" / "Yesterday". Tapping a header still flips between the two.
 - **Reminder** — daily reminder to track expenses (only where scheduled notifications are supported). **Remind daily** + a time picker. Reminders stop if Flow isn't opened for 7 consecutive days.
 - **Sound/haptic feedback upon click** — switch.
@@ -564,7 +582,7 @@ Path: **Profile → Preferences**. Reorganized in **v0.25.0** into these section
 
 **Privacy & security:**
 
-- **Mask numbers (\*) at startup** and **Mask numbers (\*) when shaking the device**.
+- **Mask numbers (\*) at startup** and **Mask numbers (\*) when shaking the device**. (v0.25.0 fixed the startup option not taking effect.)
 - **Lock app** and **Lock after closing** — only when the device has biometrics or a passcode (Face ID / Touch ID / passcode).
 
 **Data:**
@@ -706,6 +724,6 @@ When the user picks a file to import on top of an existing dataset, Flow shows a
 ## Technical bits
 
 - iOS bundle ID: `mn.flow.flow`.
-- Cross-platform: iPhone, iPad, Mac (via Catalyst / native), Android.
+- Cross-platform: iPhone, iPad, Mac (via Catalyst / native), Android. Since **v0.25.0**, iOS 15 or later is required.
 - Offline-first by design.
 - Account-type localized labels in `assets/l10n/en.json`.

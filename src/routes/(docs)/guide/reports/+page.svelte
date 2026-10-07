@@ -82,7 +82,8 @@
     <li><strong>New categories</strong> — first spending in a category for months.</li>
     <li>
       <strong>Subscription suggestions</strong> — the same charge repeating on a weekly, monthly, or yearly schedule
-      that isn't set up as recurring yet. Tap <strong>Track as recurring</strong> to set it up in one step.
+      that isn't set up as recurring yet. Bills that vary, like utilities, are suggested too once there are at least
+      four charges. Tap <strong>Track as recurring</strong> to set it up in one step.
     </li>
     <li><strong>Price changes</strong> — a regular charge went up or down, with what that means over a year.</li>
   </ul>
